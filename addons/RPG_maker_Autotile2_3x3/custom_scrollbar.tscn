@@ -1,0 +1,108 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="custom_scrollbar.gd" type="Script" id=1]
+[ext_resource path="Graphics/scrollbar.png" type="Texture" id=2]
+
+[node name="custom_scrollbar" type="Control"]
+margin_right = 30.0
+margin_bottom = 156.0
+rect_min_size = Vector2( 30, 100 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+pattern = ExtResource( 2 )
+scrollbar_design = "Vertical"
+
+[node name="background" type="TextureButton" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="shadow" type="NinePatchRect" parent="background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 7.0
+margin_bottom = 7.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 56, 0, 28, 34 )
+patch_margin_left = 10
+patch_margin_top = 11
+patch_margin_right = 10
+patch_margin_bottom = 11
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture" type="NinePatchRect" parent="background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 28, 31 )
+patch_margin_left = 10
+patch_margin_top = 11
+patch_margin_right = 10
+patch_margin_bottom = 11
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="top" type="TextureButton" parent="."]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 28.0
+margin_bottom = 18.0
+mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="shadow" type="NinePatchRect" parent="top"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -4.0
+margin_right = 1.0
+margin_bottom = 2.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 56, 0, 28, 34 )
+patch_margin_left = 10
+patch_margin_top = 11
+patch_margin_right = 10
+patch_margin_bottom = 11
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture" type="NinePatchRect" parent="top"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 3, 31, 23, 24 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="decoration" type="Sprite" parent="top"]
+position = Vector2( 5, 3 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 52, 58, 16, 10 )
+[connection signal="gui_input" from="background" to="." method="_on_background_gui_input"]
+[connection signal="mouse_entered" from="background" to="." method="_on_background_mouse_entered"]
+[connection signal="mouse_exited" from="background" to="." method="_on_background_mouse_exited"]
+[connection signal="gui_input" from="top" to="." method="_on_top_gui_input"]
+[connection signal="mouse_entered" from="top" to="." method="_on_top_mouse_entered"]
+[connection signal="mouse_exited" from="top" to="." method="_on_top_mouse_exited"]

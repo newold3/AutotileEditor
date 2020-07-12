@@ -1,0 +1,1848 @@
+[gd_scene load_steps=120 format=2]
+
+[ext_resource path="Graphics/center_button_normal.png" type="Texture" id=1]
+[ext_resource path="CreateAutoTile.gd" type="Script" id=2]
+[ext_resource path="custom_scrollbar.tscn" type="PackedScene" id=3]
+[ext_resource path="Graphics/cursors.png" type="Texture" id=4]
+[ext_resource path="theme.tres" type="Theme" id=5]
+[ext_resource path="Graphics/canvas_background.png" type="Texture" id=6]
+[ext_resource path="Graphics/background1.png" type="Texture" id=7]
+[ext_resource path="Graphics/shadow_for_dialogs.png" type="Texture" id=8]
+[ext_resource path="CustomFileDialog.tscn" type="PackedScene" id=9]
+[ext_resource path="Graphics/center_button_over.png" type="Texture" id=10]
+[ext_resource path="Graphics/ok_button_over.png" type="Texture" id=11]
+[ext_resource path="Graphics/arrow_decoration_1.png" type="Texture" id=12]
+[ext_resource path="Graphics/arrow_decoration_2.png" type="Texture" id=13]
+[ext_resource path="Graphics/cancel_button_normal.png" type="Texture" id=14]
+[ext_resource path="Graphics/dialog_selector.png" type="Texture" id=15]
+[ext_resource path="Graphics/ok_button_normal.png" type="Texture" id=16]
+[ext_resource path="Graphics/cancel_button_over.png" type="Texture" id=17]
+[ext_resource path="Graphics/arrow_down_button_over.png" type="Texture" id=18]
+[ext_resource path="Graphics/arrow_down_button_disabled.png" type="Texture" id=19]
+[ext_resource path="Graphics/arrow_down_button_normal.png" type="Texture" id=20]
+[ext_resource path="Graphics/paste_image_button_disabled.png" type="Texture" id=21]
+[ext_resource path="Graphics/paste_image_button_over.png" type="Texture" id=22]
+[ext_resource path="Graphics/paste_image_button_normal.png" type="Texture" id=23]
+[ext_resource path="Graphics/arrow_up_button_disabled.png" type="Texture" id=24]
+[ext_resource path="Graphics/arrow_up_button_over.png" type="Texture" id=25]
+[ext_resource path="Graphics/arrow_up_button_normal.png" type="Texture" id=26]
+[ext_resource path="Fonts/KOMIKAX_.ttf" type="DynamicFontData" id=27]
+[ext_resource path="Graphics/animation_button_disabled.png" type="Texture" id=28]
+[ext_resource path="Graphics/animation_button_over.png" type="Texture" id=29]
+[ext_resource path="Graphics/animation_button_normal.png" type="Texture" id=30]
+[ext_resource path="Graphics/error_icon.png" type="Texture" id=31]
+[ext_resource path="Graphics/loading.png" type="Texture" id=32]
+[ext_resource path="Graphics/edit_button_disabled.png" type="Texture" id=33]
+[ext_resource path="Graphics/edit_button_over.png" type="Texture" id=34]
+[ext_resource path="Graphics/edit_button_normal.png" type="Texture" id=35]
+
+[sub_resource type="DynamicFont" id=1]
+size = 13
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 27 )
+
+[sub_resource type="InputEventKey" id=2]
+pressed = true
+scancode = 79
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.631373, 0.823529, 0.819608, 0.666667 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.992157, 0.352941, 0.352941, 0.137255 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="InputEventKey" id=6]
+scancode = 16777224
+
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
+
+[sub_resource type="InputEventKey" id=8]
+control = true
+command = true
+scancode = 78
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.8, 0.105882, 0.105882, 0.847059 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.415686, 0.0941176, 0.0941176, 0.486275 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="InputEventKey" id=11]
+control = true
+command = true
+scancode = 83
+
+[sub_resource type="ShortCut" id=12]
+shortcut = SubResource( 11 )
+
+[sub_resource type="InputEventKey" id=13]
+scancode = 16777217
+
+[sub_resource type="ShortCut" id=14]
+shortcut = SubResource( 13 )
+
+[sub_resource type="InputEventKey" id=15]
+scancode = 16777221
+
+[sub_resource type="ShortCut" id=16]
+shortcut = SubResource( 15 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = -8
+font_data = ExtResource( 27 )
+
+[sub_resource type="DynamicFont" id=84]
+size = 18
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 27 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.8, 0.8, 0.8, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0.0156863, 0.0313726, 0.152941, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="InputEventKey" id=19]
+scancode = 16777217
+
+[sub_resource type="ShortCut" id=20]
+shortcut = SubResource( 19 )
+
+[sub_resource type="Animation" id=21]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("SelectedImage/TilesetContainer/Tileset/Container/Image/CursorSelected:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.105882 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SelectedImage/TilesetContainer/Tileset/Container/Image/CursorMouseOver:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.105882 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SelectedImage/TilesetContainer/Tileset/Container/Image/CursorDrag:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.0627451 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=22]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 0, 0, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 500, 0, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1000, 0, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1500, 0, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2000, 0, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2500, 0, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3000, 0, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3500, 0, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 4000, 0, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 4500, 0, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=33]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 0, 500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=34]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 500, 500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1000, 500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1500, 500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2000, 500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2500, 500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3000, 500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3500, 500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 4000, 500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 4500, 500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 0, 1000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 500, 1000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=45]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1000, 1000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=46]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1500, 1000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=47]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2000, 1000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=48]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2500, 1000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=49]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3000, 1000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=50]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3500, 1000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=51]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 4000, 1000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=52]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 4500, 1000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=53]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 0, 1500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=54]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 500, 1500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=55]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1000, 1500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=56]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1500, 1500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=57]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2000, 1500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=58]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2500, 1500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=59]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3000, 1500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=60]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3500, 1500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=61]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 4000, 1500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=62]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 4500, 1500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=63]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 0, 2000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=64]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 500, 2000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=65]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1000, 2000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=66]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1500, 2000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=67]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2000, 2000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=68]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2500, 2000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=69]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3000, 2000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=70]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3500, 2000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=71]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 4000, 2000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=72]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 4500, 2000, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=73]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 0, 2500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=74]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 500, 2500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=75]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1000, 2500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=76]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 1500, 2500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=77]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2000, 2500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=78]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 2500, 2500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=79]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3000, 2500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=80]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 3500, 2500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=81]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 4000, 2500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=82]
+flags = 4
+atlas = ExtResource( 32 )
+region = Rect2( 4500, 2500, 500, 500 )
+
+[sub_resource type="SpriteFrames" id=83]
+animations = [ {
+"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ) ],
+"loop": true,
+"name": "loading",
+"speed": 5.0
+} ]
+
+[node name="CreateAutoTile" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 5 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ImageList" type="Panel" parent="."]
+margin_left = 16.0
+margin_top = 29.0
+margin_right = 376.0
+margin_bottom = 333.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="shadow" type="TextureRect" parent="ImageList"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 8 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="ImageList"]
+anchor_right = 1.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0.396078, 0.858824, 1, 1 )
+text = "Loaded Images:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="list" type="ItemList" parent="ImageList"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 40.0
+margin_right = -20.0
+margin_bottom = -52.0
+custom_fonts/font = SubResource( 1 )
+max_text_lines = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="ImageList"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -45.0
+margin_right = -20.0
+margin_bottom = -20.0
+hint_tooltip = "Upload images from your hard drives"
+mouse_default_cursor_shape = 2
+shortcut = SubResource( 3 )
+text = "Load More"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AutoTileConfig" type="Panel" parent="."]
+margin_left = 16.0
+margin_top = 344.0
+margin_right = 418.0
+margin_bottom = 648.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="shadow" type="TextureRect" parent="AutoTileConfig"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 8 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="AutoTileConfig"]
+anchor_right = 1.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0.396078, 0.858824, 1, 1 )
+text = "Tile presets:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton" type="OptionButton" parent="AutoTileConfig"]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 40.0
+margin_right = -8.0
+margin_bottom = 48.0
+mouse_default_cursor_shape = 2
+text = "AUTOTILE XP"
+items = [ "AUTOTILE XP", null, false, 0, null, "AUTOTILE VXACE - FLOOR", null, false, 1, null, "AUTOTILE VXACE - WALL", null, false, 2, null, "AUTOTILE VXACE - WATERFALL", null, false, 3, null, "AUTOTILE MV - FLOOR", null, false, 4, null, "AUTOTILE MV - WALL", null, false, 5, null, "AUTOTILE MV - WATERFALL", null, false, 6, null, "CUSTOM AUTOTILE", null, false, 7, null, "SINGLE TILE", null, false, 8, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title2" type="Label" parent="AutoTileConfig"]
+margin_left = 20.0
+margin_top = 88.0
+margin_right = 155.0
+margin_bottom = 129.0
+rect_scale = Vector2( 0.8, 0.5 )
+custom_colors/font_color = Color( 0.396078, 0.858824, 1, 1 )
+text = "PREVIEW"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="preview_texture" type="TextureRect" parent="AutoTileConfig"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -40.0
+margin_right = 128.0
+margin_bottom = 96.0
+expand = true
+stretch_mode = 7
+
+[node name="columns" type="Label" parent="AutoTileConfig"]
+margin_left = 144.0
+margin_top = 72.0
+margin_right = 267.0
+margin_bottom = 113.0
+rect_scale = Vector2( 0.8, 1 )
+text = "columns:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="AutoTileConfig/columns"]
+margin_top = 40.0
+margin_right = 74.0
+margin_bottom = 64.0
+rect_scale = Vector2( 1.4, 1.2 )
+editable = false
+
+[node name="rows" type="Label" parent="AutoTileConfig"]
+margin_left = 269.0
+margin_top = 72.0
+margin_right = 349.0
+margin_bottom = 113.0
+text = "rows:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="AutoTileConfig/rows"]
+margin_left = -1.52588e-05
+margin_top = 40.0
+margin_right = 74.0
+margin_bottom = 64.0
+rect_scale = Vector2( 1.2, 1.2 )
+editable = false
+
+[node name="size_tiles" type="Label" parent="AutoTileConfig"]
+margin_left = 144.0
+margin_top = 155.0
+margin_right = 314.0
+margin_bottom = 196.0
+rect_scale = Vector2( 0.952662, 0.525765 )
+custom_colors/font_color = Color( 0.396078, 0.858824, 1, 1 )
+text = "Size of tiles:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tile_width" type="Label" parent="AutoTileConfig"]
+margin_left = 144.0
+margin_top = 168.0
+margin_right = 233.0
+margin_bottom = 209.0
+text = "width:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="AutoTileConfig/tile_width"]
+margin_left = -1.52588e-05
+margin_top = 40.0
+margin_right = 74.0
+margin_bottom = 64.0
+rect_scale = Vector2( 1.2, 1.2 )
+hint_tooltip = "Width of the tile"
+min_value = 1.0
+max_value = 3840.0
+value = 1.0
+editable = false
+
+[node name="tile_height" type="Label" parent="AutoTileConfig"]
+margin_left = 269.0
+margin_top = 168.0
+margin_right = 363.0
+margin_bottom = 209.0
+text = "height:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="AutoTileConfig/tile_height"]
+margin_left = -1.52588e-05
+margin_top = 40.0
+margin_right = 74.0
+margin_bottom = 64.0
+rect_scale = Vector2( 1.2, 1.2 )
+hint_tooltip = "Height of the tile"
+focus_next = NodePath("../../columns/SpinBox")
+focus_previous = NodePath("../../columns/SpinBox")
+min_value = 1.0
+max_value = 3840.0
+value = 1.0
+editable = false
+
+[node name="tile_layout" type="Label" parent="AutoTileConfig"]
+margin_left = 25.0
+margin_top = 256.0
+margin_right = 119.0
+margin_bottom = 297.0
+text = "Layout:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton" type="OptionButton" parent="AutoTileConfig/tile_layout"]
+margin_left = 119.0
+margin_top = 4.0
+margin_right = 235.0
+margin_bottom = 38.0
+hint_tooltip = "Pattern layout  for the Autotiles:
+
+- Old Style : Autotiles from RPG Maker XP
+- New Style: Autotiles from RPG Maker VX, ACE and MV"
+mouse_default_cursor_shape = 2
+disabled = true
+text = "Old Style"
+items = [ "Old Style", null, false, 0, null, "New Style", null, false, 1, null ]
+selected = 0
+
+[node name="OptionButton2" type="OptionButton" parent="AutoTileConfig/tile_layout"]
+margin_left = 245.0
+margin_top = 4.0
+margin_right = 361.0
+margin_bottom = 38.0
+hint_tooltip = "Type of the Autotile:
+
+-Floor: Autotiles used to draw grounds
+- Wall: Autotiles used to draw walls
+- Waterfall: Autotiles used to draw waterfalls"
+mouse_default_cursor_shape = 2
+disabled = true
+text = "Floor"
+items = [ "Floor", null, false, 0, null, "Wall", null, false, 1, null, "Waterfall", null, false, 2, null ]
+selected = 0
+
+[node name="SelectedImage" type="Panel" parent="."]
+margin_left = 404.0
+margin_top = 29.0
+margin_right = 836.0
+margin_bottom = 333.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="shadow" type="TextureRect" parent="SelectedImage"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 54.0
+margin_bottom = 43.0
+texture = ExtResource( 8 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="SelectedImage"]
+anchor_right = 1.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0.396078, 0.858824, 1, 1 )
+text = "image Selected:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TilesetContainer" type="Control" parent="SelectedImage"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 40.0
+margin_right = -35.0
+margin_bottom = -35.0
+mouse_filter = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Tileset" type="Panel" parent="SelectedImage/TilesetContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_default_cursor_shape = 2
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SelectedImage/TilesetContainer/Tileset"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="Control" parent="SelectedImage/TilesetContainer/Tileset"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="TextureRect" parent="SelectedImage/TilesetContainer/Tileset/Container"]
+margin_right = 424.0
+margin_bottom = 264.0
+mouse_filter = 2
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CursorSelected" type="NinePatchRect" parent="SelectedImage/TilesetContainer/Tileset/Container/Image"]
+visible = false
+margin_right = 20.0
+margin_bottom = 20.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 96, 144 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="CursorMouseOver" type="NinePatchRect" parent="SelectedImage/TilesetContainer/Tileset/Container/Image"]
+visible = false
+margin_right = 20.0
+margin_bottom = 20.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 192, 0, 96, 144 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="CursorDrag" type="NinePatchRect" parent="SelectedImage/TilesetContainer/Tileset/Container/Image"]
+visible = false
+margin_right = 20.0
+margin_bottom = 20.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 96, 0, 96, 144 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="HorizontalBar" parent="SelectedImage/TilesetContainer" instance=ExtResource( 3 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 30 )
+scrollbar_design = "Horizontal"
+
+[node name="VerticalBar" parent="SelectedImage/TilesetContainer" instance=ExtResource( 3 )]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 0.0
+mouse_filter = 2
+
+[node name="FitImageButton" type="TextureButton" parent="SelectedImage/TilesetContainer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+hint_tooltip = "- [color=#FF0000]Left Click[/color]:
+     Fit the image to the width and height of the canvas
+- [color=#FF0000]CTRL + Left Click[/color]:
+     Fit the image to the height of the canvas
+- [color=#FF0000]ALT + Left Click[/color]:
+     Fit the image to the width of the canvas
+- [color=#FF0000]CTRL + Mouse Wheel in canvas[/color]:
+     Mouse Wheel Up:          Zoom In
+     Mouse Wheel Down:     Zoom Out"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AutoTileList" type="Panel" parent="."]
+margin_left = 442.0
+margin_top = 344.0
+margin_right = 802.0
+margin_bottom = 648.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="shadow" type="TextureRect" parent="AutoTileList"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 8 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="AutoTileList"]
+anchor_right = 1.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0.396078, 0.858824, 1, 1 )
+text = "Created Tiles:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="list" type="ItemList" parent="AutoTileList"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 40.0
+margin_right = -49.0
+margin_bottom = -52.0
+custom_styles/cursor = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
+select_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="AutoTileList"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -45.0
+margin_right = -20.0
+margin_bottom = -20.0
+hint_tooltip = "Remove the tile selected"
+focus_mode = 0
+mouse_default_cursor_shape = 2
+disabled = true
+shortcut = SubResource( 7 )
+text = "Remove Selected"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="edit_autotile_button" type="TextureButton" parent="AutoTileList"]
+margin_left = 315.0
+margin_top = 52.0
+margin_right = 347.0
+margin_bottom = 84.0
+hint_tooltip = "Change the name of the selected tile and its animation speed.
+You can [color=#FF0000]double-click[/color] on any item on the list to perform this same action"
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource( 35 )
+texture_hover = ExtResource( 34 )
+texture_disabled = ExtResource( 33 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="move_autotile_up_button" type="TextureButton" parent="AutoTileList"]
+margin_left = 315.0
+margin_top = 91.0
+margin_right = 347.0
+margin_bottom = 123.0
+hint_tooltip = "Move the autotiles selected to up"
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource( 26 )
+texture_hover = ExtResource( 25 )
+texture_disabled = ExtResource( 24 )
+
+[node name="move_autotile_down_button" type="TextureButton" parent="AutoTileList"]
+margin_left = 315.0
+margin_top = 130.0
+margin_right = 347.0
+margin_bottom = 162.0
+hint_tooltip = "Move the autotiles selected to down"
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource( 20 )
+texture_hover = ExtResource( 18 )
+texture_disabled = ExtResource( 19 )
+
+[node name="create_merged_autotile_button" type="TextureButton" parent="AutoTileList"]
+margin_left = 315.0
+margin_top = 169.0
+margin_right = 347.0
+margin_bottom = 201.0
+hint_tooltip = "Combine the autotiles selected
+into a new autotile
+(sorted top to bottom)
+
+You can only combine
+tiles of the same type and
+size"
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource( 23 )
+texture_hover = ExtResource( 22 )
+texture_disabled = ExtResource( 21 )
+
+[node name="create_animated_autotile_button" type="TextureButton" parent="AutoTileList"]
+margin_left = 315.0
+margin_top = 209.0
+margin_right = 347.0
+margin_bottom = 229.0
+hint_tooltip = "Replace the selected autotiles with
+an uniq animated autotile
+(sorted top to bottom)
+
+You can only combine
+tiles of the same type and
+size"
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource( 30 )
+texture_hover = ExtResource( 29 )
+texture_disabled = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 847.0
+margin_top = 60.0
+margin_right = 1007.0
+margin_bottom = 252.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="Panel"]
+anchor_right = 1.0
+margin_top = -44.0
+margin_right = 85.0
+rect_scale = Vector2( 0.647784, 1.11199 )
+custom_colors/font_color = Color( 0.396078, 0.858824, 1, 1 )
+text = "Current Selection"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Panel/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="preview_selection_selected" type="TextureRect" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Panel"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 4.0
+hint_tooltip = "Create a new tile from the current selection.
+
+You can [color=#FF0000]Double Click[/color] on the canvas
+to perform this same action"
+mouse_default_cursor_shape = 2
+disabled = true
+shortcut = SubResource( 9 )
+text = "Create Tile"
+
+[node name="fast_export_button" type="OptionButton" parent="Panel"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 44.0
+margin_right = 2.0
+margin_bottom = 78.0
+hint_tooltip = "converts the current image to a new tilemap"
+mouse_default_cursor_shape = 2
+disabled = true
+text = "Select Fast Export Preset"
+clip_text = true
+align = 1
+items = [ "Select Fast Export Preset", null, false, 0, null, "RPG Maker VX/ACE A1 (Animations 512x384) to tilemap", null, false, 1, null, "RPG Maker VX/ACE A2 (Floors 512x384) to tilemap", null, false, 2, null, "RPG Maker VX/ACE A3 (Buildings 512x216) to tilemap", null, false, 3, null, "RPG Maker VX/ACE A4 (Walls 512x480) to tilemap", null, false, 4, null, "RPG Maker VX/ACE A5 (Single Tiles 256x512) to tilemap", null, false, 5, null, "RPG Maker VX/ACE B-E (Single Tiles 512x512) to tilemap", null, false, 6, null, "RPG Maker MV A1 (Animations 768x576) to tilemap", null, false, 7, null, "RPG Maker MV A2 (Floors 768x576) to tilemap", null, false, 8, null, "RPG Maker MV A3 (Buildings 768x384) to tilemap", null, false, 9, null, "RPG Maker MV A4 (Walls 768x720) to tilemap", null, false, 10, null, "RPG Maker MV A5 (Single Tiles 384x768) to tilemap", null, false, 11, null, "RPG Maker MV B-E (Single Tiles 768x768) to tilemap", null, false, 12, null, "RPG Maker XP (width and height divisible by 32) tileset to tilemap", null, false, 13, null, "RPG Maker XP autotile (96x128) to tilemap", null, false, 14, null, "RPG Maker XP autotile animated (384x128) to tilemap", null, false, 15, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 847.0
+margin_top = 391.0
+margin_right = 1007.0
+margin_bottom = 605.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="Panel2"]
+anchor_right = 1.0
+margin_top = -44.0
+margin_right = 18.0
+rect_scale = Vector2( 0.9, 1.2 )
+custom_colors/font_color = Color( 0.396078, 0.858824, 1, 1 )
+text = "Preview Tile"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Panel2/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="preview_autotile_selected" type="TextureRect" parent="Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel3" type="Panel" parent="."]
+margin_left = 18.0
+margin_top = 664.0
+margin_right = 1002.0
+margin_bottom = 756.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel3"]
+margin_left = 13.0
+margin_top = 3.99994
+margin_right = 256.0
+margin_bottom = 44.9999
+text = "Save Autotiles in:"
+
+[node name="Label2" type="Label" parent="Panel3"]
+margin_left = 13.0
+margin_top = 46.9999
+margin_right = 256.0
+margin_bottom = 87.9999
+text = "Save Tileset in:"
+
+[node name="autotiles_folder" type="LineEdit" parent="Panel3"]
+margin_left = 265.0
+margin_top = 9.0
+margin_right = 785.0
+margin_bottom = 43.0
+hint_tooltip = "All the tiles are saved inside a subfolder in the
+selected folder called the same as the Tileset
+
+After pressing the save button you can specify the
+names of the tilesets and tilemaps to be saved"
+mouse_default_cursor_shape = 2
+text = "res://Graphics/Autotiles/"
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tileset_folder" type="LineEdit" parent="Panel3"]
+margin_left = 265.0
+margin_top = 50.9999
+margin_right = 785.0
+margin_bottom = 84.9999
+hint_tooltip = "Folder where you go to save the Tilesets Resources.
+
+After pressing the save button you can specify the
+names of the tilesets and tilemaps to be saved"
+mouse_default_cursor_shape = 2
+text = "res://Resources/Tilesets/"
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="select_autotiles_folder_Button" type="Button" parent="Panel3"]
+margin_left = 792.0
+margin_top = 7.99994
+margin_right = 868.0
+margin_bottom = 43.9999
+hint_tooltip = "All the tiles are saved inside a subfolder in the
+selected folder called the same as the Tileset
+
+After pressing the save button you can specify the
+names of the tilesets and tilemaps to be saved"
+mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Panel3/select_autotiles_folder_Button"]
+margin_left = 6.59998
+margin_top = 1.00006
+margin_right = 92.6
+margin_bottom = 42.0001
+rect_scale = Vector2( 0.752879, 0.771937 )
+text = "select"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="select_tilesets_folder_Button" type="Button" parent="Panel3"]
+margin_left = 792.0
+margin_top = 50.9999
+margin_right = 868.0
+margin_bottom = 86.9999
+hint_tooltip = "Folder where you go to save the Tilesets Resources.
+
+After pressing the save button you can specify the
+names of the tilesets and tilemaps to be saved"
+mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Panel3/select_tilesets_folder_Button"]
+margin_left = 6.59998
+margin_top = 1.00006
+margin_right = 92.6
+margin_bottom = 42.0001
+rect_scale = Vector2( 0.752879, 0.771937 )
+text = "select"
+align = 1
+valign = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="save_all_Button" type="Button" parent="Panel3"]
+modulate = Color( 1, 1, 1, 0.4 )
+margin_left = 889.0
+margin_top = 9.0
+margin_right = 971.0
+margin_bottom = 85.0
+hint_tooltip = "Save all tiles and autotiles.
+Create a new tileset and tilemap for each different tile size
+(Ex: All tiles and autotiles with size 32x32 are saved in the
+same tileset and a tilemap with this tileset is created)
+The tilemaps have a script attached to manage the animations"
+mouse_default_cursor_shape = 2
+custom_styles/disabled = SubResource( 10 )
+disabled = true
+shortcut = SubResource( 12 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel3/save_all_Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 15.0
+rect_scale = Vector2( 1.00872, 0.808455 )
+text = "SAVE
+ALL"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Decorations" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Decorations"]
+position = Vector2( 393, 348 )
+scale = Vector2( 0.521, 0.667 )
+texture = ExtResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="Decorations"]
+position = Vector2( 825, 496 )
+scale = Vector2( 0.48, 0.64 )
+texture = ExtResource( 13 )
+
+[node name="Sprite4" type="Sprite" parent="Decorations"]
+position = Vector2( 390, 177 )
+scale = Vector2( 0.48, 0.639998 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="Decorations"]
+position = Vector2( 431, 496 )
+scale = Vector2( 0.48, 0.64 )
+texture = ExtResource( 13 )
+
+[node name="hide_behind_controls" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="hide_behind_controls"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.815686 )
+
+[node name="create_autotile_dialog" type="Panel" parent="."]
+visible = false
+margin_left = 635.0
+margin_top = 336.0
+margin_right = 987.0
+margin_bottom = 423.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="dialog_selector" type="Sprite" parent="create_autotile_dialog"]
+position = Vector2( 287, -8 )
+texture = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="create_autotile_dialog"]
+margin_left = 15.0
+margin_top = 2.0
+margin_right = 263.0
+margin_bottom = 43.0
+text = "Name for this tile"
+
+[node name="LineEdit" type="LineEdit" parent="create_autotile_dialog"]
+margin_left = 11.0
+margin_top = 45.0
+margin_right = 297.0
+margin_bottom = 79.0
+caret_blink = true
+
+[node name="close_button" type="TextureButton" parent="create_autotile_dialog"]
+margin_left = 313.0
+margin_top = 6.5
+margin_right = 345.0
+margin_bottom = 38.5
+mouse_default_cursor_shape = 2
+shortcut = SubResource( 14 )
+texture_normal = ExtResource( 14 )
+texture_hover = ExtResource( 17 )
+
+[node name="ok_button" type="TextureButton" parent="create_autotile_dialog"]
+margin_left = 314.0
+margin_top = 45.0
+margin_right = 346.0
+margin_bottom = 77.0
+mouse_default_cursor_shape = 2
+shortcut = SubResource( 16 )
+texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 11 )
+
+[node name="edit_autotile_dialog" type="Panel" parent="."]
+visible = false
+margin_left = 492.0
+margin_top = 432.0
+margin_right = 804.0
+margin_bottom = 595.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="dialog_selector" type="Sprite" parent="edit_autotile_dialog"]
+position = Vector2( 287, -8 )
+texture = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="edit_autotile_dialog"]
+margin_left = 15.0
+margin_top = 2.0
+margin_right = 263.0
+margin_bottom = 43.0
+rect_scale = Vector2( 0.9, 1 )
+text = "Name for tile selected"
+
+[node name="LineEdit" type="LineEdit" parent="edit_autotile_dialog"]
+margin_left = 11.0
+margin_top = 45.0
+margin_right = 297.0
+margin_bottom = 79.0
+caret_blink = true
+
+[node name="Label2" type="Label" parent="edit_autotile_dialog"]
+margin_left = 15.0
+margin_top = 73.0
+margin_right = 263.0
+margin_bottom = 114.0
+text = "Animation Speed"
+
+[node name="SpinBox" type="SpinBox" parent="edit_autotile_dialog"]
+margin_left = 11.0
+margin_top = 116.0
+margin_right = 146.0
+margin_bottom = 150.0
+min_value = 0.01
+max_value = 9999.0
+step = 0.1
+value = 0.01
+
+[node name="close_button" type="TextureButton" parent="edit_autotile_dialog"]
+margin_left = 263.0
+margin_top = 117.0
+margin_right = 295.0
+margin_bottom = 149.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+shortcut = SubResource( 14 )
+texture_normal = ExtResource( 14 )
+texture_hover = ExtResource( 17 )
+
+[node name="ok_button" type="TextureButton" parent="edit_autotile_dialog"]
+margin_left = 222.0
+margin_top = 117.0
+margin_right = 254.0
+margin_bottom = 149.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+shortcut = SubResource( 16 )
+texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="error1_dialog" type="Panel" parent="."]
+visible = false
+margin_left = 491.0
+margin_top = 509.0
+margin_right = 843.0
+margin_bottom = 608.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialog_selector" type="Sprite" parent="error1_dialog"]
+position = Vector2( 287, -8 )
+texture = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="error1_dialog"]
+margin_left = 89.0
+margin_top = 4.0
+margin_right = 341.0
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 17 )
+text = "Error: One or more
+selected tiles are of
+different size or type"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="error_icon" type="Sprite" parent="error1_dialog"]
+position = Vector2( 47, 55 )
+texture = ExtResource( 31 )
+
+[node name="error2_dialog" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -263.0
+margin_top = -67.5
+margin_right = 263.0
+margin_bottom = 67.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="error_icon" type="Sprite" parent="error2_dialog"]
+position = Vector2( 47, 72 )
+texture = ExtResource( 31 )
+
+[node name="Label" type="RichTextLabel" parent="error2_dialog"]
+margin_left = 89.0
+margin_top = 10.0
+margin_right = 514.0
+margin_bottom = 126.0
+custom_fonts/normal_font = SubResource( 84 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveDialog" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -262.0
+margin_top = -277.0
+margin_right = 268.0
+margin_bottom = 128.0
+custom_styles/panel = SubResource( 18 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="SaveDialog"]
+show_behind_parent = true
+position = Vector2( 325.25, 228.25 )
+scale = Vector2( 2.8475, 3.14333 )
+texture = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="SaveDialog"]
+margin_top = 1.0
+margin_right = 529.0
+margin_bottom = 60.0
+rect_scale = Vector2( 0.9, 1 )
+custom_colors/font_color = Color( 0.196078, 0.54902, 1, 1 )
+text = "Save Images, Tilesets and Tilemaps"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundContainer" type="ColorRect" parent="SaveDialog"]
+margin_left = 25.0
+margin_top = 61.0
+margin_right = 506.0
+margin_bottom = 309.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="ScrollContainer" parent="SaveDialog/BackgroundContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="SaveDialog/BackgroundContainer/Container"]
+
+[node name="CloseButton" type="TextureButton" parent="SaveDialog"]
+margin_left = 478.0
+margin_top = 15.0
+margin_right = 510.0
+margin_bottom = 47.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+shortcut = SubResource( 20 )
+texture_normal = ExtResource( 14 )
+texture_hover = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="SaveDialog"]
+margin_left = 32.0
+margin_top = 311.0
+margin_right = 265.0
+margin_bottom = 352.0
+text = "Save Tilemaps in:"
+
+[node name="LineEdit" type="LineEdit" parent="SaveDialog"]
+margin_left = 29.0
+margin_top = 355.0
+margin_right = 421.0
+margin_bottom = 389.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "res://Scenes/"
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="SaveDialog"]
+margin_left = 437.0
+margin_top = 323.0
+margin_right = 504.0
+margin_bottom = 386.0
+hint_tooltip = "Save all to disk in the paths selected.
+
+If the destination folder contains files with the same names
+as the files to be saved, these files will be renamed before
+being saved to avoid conflicts"
+focus_mode = 0
+mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="SaveDialog/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 29.0
+margin_bottom = 26.0
+rect_scale = Vector2( 0.7, 0.7 )
+text = "Start
+SAVE"
+align = 1
+valign = 1
+
+[node name="CustomFileDialog" parent="." instance=ExtResource( 9 )]
+visible = false
+margin_left = 208.0
+margin_top = 56.0
+margin_right = 213.76
+margin_bottom = 50.8799
+allow_external_files = true
+
+[node name="path_LineEdit" parent="CustomFileDialog/PanelBottom" index="4"]
+margin_right = 6.12799
+
+[node name="drive_select_option_button" parent="CustomFileDialog/PanelBottom" index="5"]
+visible = false
+margin_left = -55.0
+margin_right = -1.0
+margin_bottom = -220.5
+rect_scale = Vector2( 1, 0.9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "CursorsBlink"
+anims/CursorsBlink = SubResource( 21 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[node name="saving_all_animation" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color( 0, 0, 0, 0.941176 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="saving_all_animation"]
+material = SubResource( 22 )
+position = Vector2( 494, 383 )
+frames = SubResource( 83 )
+animation = "loading"
+frame = 38
+speed_scale = 10.0
+playing = true
+
+[node name="Label" type="Label" parent="saving_all_animation/AnimatedSprite"]
+anchor_left = 0.372
+anchor_top = 0.418
+anchor_right = 0.709
+anchor_bottom = 0.573
+margin_left = -279.0
+margin_top = -265.0
+margin_right = -335.5
+margin_bottom = -301.5
+rect_scale = Vector2( 1.83768, 2.58954 )
+text = "SAVING..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="saving_all_animation"]
+anchor_left = 0.180664
+anchor_top = 0.113281
+anchor_right = 0.805664
+anchor_bottom = 0.217448
+text = "Saving all tiles to disk. wait a moment please"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+[connection signal="tree_exiting" from="." to="." method="_on_CreateAutoTile_tree_exiting"]
+[connection signal="item_selected" from="ImageList/list" to="." method="_on_list_item_selected"]
+[connection signal="button_up" from="ImageList/Button" to="." method="_on_ImageListButton_button_up"]
+[connection signal="gui_input" from="AutoTileConfig/OptionButton" to="." method="_on_OptionButton_gui_input"]
+[connection signal="item_selected" from="AutoTileConfig/OptionButton" to="." method="_on_config_OptionButton_item_selected"]
+[connection signal="value_changed" from="AutoTileConfig/columns/SpinBox" to="." method="_on_tile_columns_SpinBox_value_changed"]
+[connection signal="value_changed" from="AutoTileConfig/rows/SpinBox" to="." method="_on_tile_rows_SpinBox_value_changed"]
+[connection signal="value_changed" from="AutoTileConfig/tile_width/SpinBox" to="." method="_on_tile_width_SpinBox_value_changed"]
+[connection signal="value_changed" from="AutoTileConfig/tile_height/SpinBox" to="." method="_on_tile_height_SpinBox_value_changed"]
+[connection signal="item_selected" from="AutoTileConfig/tile_layout/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="item_selected" from="AutoTileConfig/tile_layout/OptionButton2" to="." method="_on_OptionButton2_item_selected"]
+[connection signal="gui_input" from="SelectedImage/TilesetContainer/Tileset" to="." method="_on_Tileset_gui_input"]
+[connection signal="mouse_entered" from="SelectedImage/TilesetContainer/Tileset" to="." method="_on_Tileset_mouse_entered"]
+[connection signal="mouse_exited" from="SelectedImage/TilesetContainer/Tileset" to="." method="_on_Tileset_mouse_exited"]
+[connection signal="button_up" from="SelectedImage/TilesetContainer/FitImageButton" to="." method="_on_FitImageButton_button_up"]
+[connection signal="gui_input" from="AutoTileList/list" to="." method="_on_autotiles_list_gui_input"]
+[connection signal="item_selected" from="AutoTileList/list" to="." method="_on_autotile_list_item_selected"]
+[connection signal="multi_selected" from="AutoTileList/list" to="." method="_on_list_multi_selected"]
+[connection signal="button_up" from="AutoTileList/Button" to="." method="_on_remove_autotile_button_up"]
+[connection signal="gui_input" from="AutoTileList/Button" to="." method="_on_remove_autotile_Button_gui_input"]
+[connection signal="button_up" from="AutoTileList/edit_autotile_button" to="." method="_on_edit_autotile_button_button_up"]
+[connection signal="button_up" from="AutoTileList/move_autotile_up_button" to="." method="_on_move_autotile_up_button_button_up"]
+[connection signal="button_up" from="AutoTileList/move_autotile_down_button" to="." method="_on_move_autotile_down_button_button_up"]
+[connection signal="button_up" from="AutoTileList/create_merged_autotile_button" to="." method="_on_create_merged_autotile_button_button_up"]
+[connection signal="button_up" from="AutoTileList/create_animated_autotile_button" to="." method="_on_create_animated_autotile_button_button_up"]
+[connection signal="button_up" from="Panel/Button" to="." method="_on_create_autotile_Button_button_up"]
+[connection signal="toggled" from="Panel/fast_export_button" to="." method="_on_fast_export_button_toggled"]
+[connection signal="gui_input" from="Panel3/autotiles_folder" to="." method="_on_autotiles_folder_gui_input"]
+[connection signal="gui_input" from="Panel3/tileset_folder" to="." method="_on_tileset_folder_gui_input"]
+[connection signal="button_up" from="Panel3/select_autotiles_folder_Button" to="." method="_on_select_autotiles_folder_Button_button_up"]
+[connection signal="button_up" from="Panel3/select_tilesets_folder_Button" to="." method="_on_select_tilesets_folder_Button_button_up"]
+[connection signal="button_up" from="Panel3/save_all_Button" to="." method="_on_save_all_Button_button_up"]
+[connection signal="gui_input" from="hide_behind_controls" to="." method="_on_hide_behind_controls_gui_input"]
+[connection signal="visibility_changed" from="create_autotile_dialog/LineEdit" to="." method="_on_LineEdit_visibility_changed"]
+[connection signal="button_up" from="create_autotile_dialog/close_button" to="." method="hide_all_dialogs"]
+[connection signal="button_up" from="create_autotile_dialog/ok_button" to="." method="_on_create_autotile_dialog_ok_button_pressed"]
+[connection signal="focus_exited" from="create_autotile_dialog/ok_button" to="." method="_on_create_autotile_dialog_ok_button_focus_exited"]
+[connection signal="button_up" from="edit_autotile_dialog/close_button" to="." method="hide_all_dialogs"]
+[connection signal="button_up" from="edit_autotile_dialog/ok_button" to="." method="_on_edit_autotile_ok_button_button_up"]
+[connection signal="gui_input" from="error1_dialog" to="." method="_on_error_dialog_gui_input"]
+[connection signal="gui_input" from="error2_dialog" to="." method="_on_error_dialog_gui_input"]
+[connection signal="gui_input" from="SaveDialog" to="." method="_on_SaveDialog_gui_input"]
+[connection signal="visibility_changed" from="SaveDialog" to="." method="_on_SaveDialog_visibility_changed"]
+[connection signal="button_up" from="SaveDialog/CloseButton" to="." method="_on_save_dialog_CloseButton_button_up"]
+[connection signal="gui_input" from="SaveDialog/LineEdit" to="." method="_on_save_dialog_tilemap_LineEdit_gui_input"]
+[connection signal="button_up" from="SaveDialog/Button" to="." method="_on_save_dialog_save_Button_button_up"]
+[connection signal="hide" from="CustomFileDialog" to="." method="_on_CustomFileDialog_hide"]
+[connection signal="select_files" from="CustomFileDialog" to="." method="_on_CustomFileDialog_select_files"]
+[connection signal="timeout" from="Timer" to="." method="animate_autotile_selected"]
+
+[editable path="CustomFileDialog"]

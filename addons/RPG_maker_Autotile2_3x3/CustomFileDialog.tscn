@@ -1,0 +1,460 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="CustomFileDialog.gd" type="Script" id=1]
+[ext_resource path="Graphics/cancel_button_normal.png" type="Texture" id=2]
+[ext_resource path="Graphics/cancel_button_over.png" type="Texture" id=3]
+[ext_resource path="Fonts/KOMIKAX_.ttf" type="DynamicFontData" id=4]
+[ext_resource path="Graphics/arrow_up_button_normal.png" type="Texture" id=5]
+[ext_resource path="Graphics/arrow_up_button_over.png" type="Texture" id=6]
+[ext_resource path="Graphics/ok_button_normal.png" type="Texture" id=7]
+[ext_resource path="Graphics/ok_button_over.png" type="Texture" id=8]
+[ext_resource path="Graphics/shadow_for_dialogs.png" type="Texture" id=9]
+[ext_resource path="Graphics/folder_button_normal.png" type="Texture" id=10]
+[ext_resource path="Graphics/folder_button_over.png" type="Texture" id=11]
+[ext_resource path="Graphics/dialog_selector.png" type="Texture" id=12]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0156863, 0.0313726, 0.152941, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.541176, 0.584314, 0.596078, 1 )
+border_width_left = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.0352941, 0.0666667, 0.266667, 1 )
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id=3]
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 1
+border_color = Color( 0.0352941, 0.0666667, 0.266667, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+extra_spacing_char = 5
+font_data = ExtResource( 4 )
+
+[sub_resource type="InputEventKey" id=5]
+scancode = 16777217
+
+[sub_resource type="ShortCut" id=6]
+shortcut = SubResource( 5 )
+
+[sub_resource type="InputEventKey" id=7]
+control = true
+command = true
+scancode = 65
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.678431, 0.705882, 0.709804, 0 )
+border_color = Color( 0, 0.0352941, 0.239216, 1 )
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="DynamicFont" id=10]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 5
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 12
+extra_spacing_char = 5
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.72549, 0.8, 0.819608, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="DynamicFont" id=13]
+size = 40
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = -20
+extra_spacing_char = 5
+font_data = ExtResource( 4 )
+
+[node name="CustomFileDialog" type="Control"]
+anchor_left = -0.008
+anchor_right = 0.664
+anchor_bottom = 1.013
+margin_left = 8.192
+margin_right = -5.93604
+margin_bottom = -7.79999
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shadow_for_dialogs" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 391.5, 347 )
+scale = Vector2( 4.125, 5.06667 )
+texture = ExtResource( 9 )
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = -2.0
+margin_top = 1.0
+margin_right = 674.0
+margin_bottom = 596.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+margin_left = 5.0
+margin_top = 16.0
+margin_right = 667.0
+margin_bottom = 593.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelTop" type="Panel" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 667.0
+margin_bottom = 50.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WindowTitle" type="Label" parent="PanelTop"]
+anchor_top = 0.067
+anchor_right = 0.926
+anchor_bottom = 0.933
+margin_left = 20.0
+margin_top = -0.0150001
+margin_right = -0.0120239
+margin_bottom = 2.015
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.0392157, 0.164706, 0.32549, 1 )
+custom_colors/font_color_shadow = Color( 0.941176, 0.937255, 0.937255, 0.529412 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+text = "Window title"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" type="TextureButton" parent="PanelTop"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -15.5
+margin_right = -5.0
+margin_bottom = 16.5
+focus_mode = 0
+mouse_default_cursor_shape = 2
+shortcut = SubResource( 6 )
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="select_all_Button" type="Button" parent="PanelTop"]
+margin_right = 12.0
+margin_bottom = 20.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+focus_mode = 0
+shortcut = SubResource( 8 )
+clip_text = true
+
+[node name="PanelBottom" type="Panel" parent="."]
+margin_left = 10.0
+margin_top = 55.0
+margin_right = 662.0
+margin_bottom = 592.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+custom_styles/panel = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backButton" type="TextureButton" parent="PanelBottom"]
+margin_left = 12.0
+margin_top = 13.0
+margin_right = 44.0
+margin_bottom = 45.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="createDirectory" type="TextureButton" parent="PanelBottom"]
+margin_left = 53.0
+margin_top = 20.0
+margin_right = 80.0
+margin_bottom = 41.0
+hint_tooltip = "Create a new folder and go into it"
+focus_mode = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="okButton" type="TextureButton" parent="PanelBottom"]
+anchor_left = 0.982
+anchor_top = 0.939
+anchor_right = 0.982
+anchor_bottom = 0.939
+margin_left = -31.264
+margin_top = -16.243
+margin_right = 0.735962
+margin_bottom = 15.757
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+texture_focused = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="PanelBottom"]
+margin_left = 94.0
+margin_top = 12.0
+margin_right = 319.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.729412, 0.823529, 0.823529, 1 )
+text = "Current Path:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="path_LineEdit" type="LineEdit" parent="PanelBottom"]
+anchor_top = 0.026
+anchor_right = 0.986
+anchor_bottom = 0.084
+margin_left = 327.0
+margin_top = 0.0380001
+margin_right = -52.872
+margin_bottom = -0.107998
+focus_mode = 0
+custom_fonts/font = SubResource( 11 )
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="drive_select_option_button" type="OptionButton" parent="PanelBottom"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -54.0
+margin_top = -254.5
+margin_right = -8.0
+margin_bottom = -234.5
+focus_mode = 0
+mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="PanelBottom"]
+margin_left = 8.0
+margin_top = 488.0
+margin_right = 233.0
+margin_bottom = 522.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.729412, 0.823529, 0.823529, 1 )
+text = "File Selected:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="file_LineEdit" type="LineEdit" parent="PanelBottom"]
+anchor_top = 0.901
+anchor_right = 0.917
+anchor_bottom = 0.98
+margin_left = 247.0
+margin_top = 5.16299
+margin_right = 0.115967
+margin_bottom = -6.26001
+focus_mode = 0
+custom_fonts/font = SubResource( 11 )
+editable = false
+placeholder_text = "no file selected"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="PanelBottom"]
+anchor_top = 0.114
+anchor_right = 1.0
+anchor_bottom = 0.881
+margin_top = -0.218002
+margin_bottom = -0.0970154
+color = Color( 0.727448, 0.75901, 0.769531, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelBottom"]
+anchor_top = 0.119
+anchor_right = 0.979
+anchor_bottom = 0.881
+margin_top = -2.903
+margin_right = 13.692
+margin_bottom = -0.0970154
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelBottom/ScrollContainer"]
+margin_right = 652.0
+margin_bottom = 412.0
+grow_horizontal = 0
+grow_vertical = 2
+custom_constants/separation = 60
+
+[node name="Grid" type="GridContainer" parent="PanelBottom/ScrollContainer/VBoxContainer"]
+margin_right = 652.0
+margin_bottom = 412.0
+rect_min_size = Vector2( 652, 412 )
+mouse_filter = 0
+custom_constants/hseparation = 15
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hide_behind_controls" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="hide_behind_controls"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.611765 )
+
+[node name="create_folder_dialog" type="Panel" parent="."]
+visible = false
+margin_left = 54.0
+margin_top = 124.0
+margin_right = 478.0
+margin_bottom = 244.0
+custom_styles/panel = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="create_folder_dialog"]
+margin_left = 20.0
+margin_top = 14.0
+margin_right = 432.0
+margin_bottom = 61.0
+rect_scale = Vector2( 0.459142, 0.96494 )
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "New Directory:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="create_folder_dialog"]
+margin_left = 22.0
+margin_top = 68.0
+margin_right = 298.0
+margin_bottom = 106.0
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ok_button" type="TextureButton" parent="create_folder_dialog"]
+margin_left = 336.0
+margin_top = 70.0
+margin_right = 368.0
+margin_bottom = 102.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cancel_button" type="TextureButton" parent="create_folder_dialog"]
+margin_left = 376.0
+margin_top = 70.0
+margin_right = 408.0
+margin_bottom = 102.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialog_selector" type="Sprite" parent="create_folder_dialog"]
+position = Vector2( 29, -8 )
+texture = ExtResource( 12 )
+
+[node name="shadow_for_dialogs" type="Sprite" parent="create_folder_dialog"]
+show_behind_parent = true
+position = Vector2( 246, 87 )
+scale = Vector2( 2.575, 1.1 )
+texture = ExtResource( 9 )
+[connection signal="focus_exited" from="." to="." method="_on_CustomFileDialog_focus_exited"]
+[connection signal="gui_input" from="Panel2" to="." method="move_window"]
+[connection signal="gui_input" from="PanelTop" to="." method="move_window"]
+[connection signal="button_up" from="PanelTop/CloseButton" to="." method="_on_CloseButton_button_up"]
+[connection signal="button_up" from="PanelTop/select_all_Button" to="." method="_on_select_all_button_up"]
+[connection signal="button_up" from="PanelBottom/backButton" to="." method="_on_backButton_button_up"]
+[connection signal="button_up" from="PanelBottom/createDirectory" to="." method="_on_createDirectory_button_up"]
+[connection signal="button_down" from="PanelBottom/okButton" to="." method="_on_okButton_button_down"]
+[connection signal="item_selected" from="PanelBottom/drive_select_option_button" to="." method="_on_drive_select_option_button_item_selected"]
+[connection signal="gui_input" from="PanelBottom/ScrollContainer/VBoxContainer/Grid" to="." method="_on_Grid_gui_input"]
+[connection signal="gui_input" from="hide_behind_controls" to="." method="_on_hide_behind_controls_gui_input"]
+[connection signal="text_entered" from="create_folder_dialog/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="button_up" from="create_folder_dialog/ok_button" to="." method="_on_create_folder_ok_button_button_up"]
+[connection signal="button_up" from="create_folder_dialog/cancel_button" to="." method="_on_cancel_button_button_up"]
+[connection signal="focus_exited" from="create_folder_dialog/cancel_button" to="." method="_on_cancel_button_focus_exited"]

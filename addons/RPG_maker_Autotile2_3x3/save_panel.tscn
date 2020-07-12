@@ -1,0 +1,156 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="save_panel.gd" type="Script" id=1]
+[ext_resource path="Graphics/minus_button_over.png" type="Texture" id=2]
+[ext_resource path="Graphics/minus_button_normal.png" type="Texture" id=3]
+[ext_resource path="Graphics/help_button_normal.png" type="Texture" id=4]
+[ext_resource path="Graphics/help_button_over.png" type="Texture" id=5]
+
+[node name="save_panel" type="Panel"]
+margin_right = 440.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 440, 178 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title_label" type="Label" parent="."]
+margin_left = 12.0
+margin_top = 1.0
+margin_right = 164.0
+margin_bottom = 42.0
+rect_scale = Vector2( 0.8, 1 )
+custom_colors/font_color = Color( 0.396078, 0.858824, 1, 1 )
+text = "Title"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="delete_button" type="TextureButton" parent="."]
+margin_left = 396.0
+margin_top = 9.0
+margin_right = 428.0
+margin_bottom = 41.0
+hint_tooltip = "Cancel
+(don't save these tiles)"
+focus_mode = 0
+mouse_default_cursor_shape = 2
+enabled_focus_mode = 0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap_name_label" type="Label" parent="."]
+margin_left = 11.0
+margin_top = 48.0
+margin_right = 205.0
+margin_bottom = 89.0
+rect_scale = Vector2( 0.8, 1 )
+text = "TileMap Name:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tilemap_name_LineEdit" type="LineEdit" parent="."]
+margin_left = 241.0
+margin_top = 53.0
+margin_right = 432.0
+margin_bottom = 87.0
+hint_tooltip = "Name for this tilemap"
+text = "new_tilemap"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileSet_name_label" type="Label" parent="."]
+margin_left = 11.0
+margin_top = 87.0
+margin_right = 205.0
+margin_bottom = 128.0
+rect_scale = Vector2( 0.8, 1 )
+text = "Tileset Name:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tileset_name_LineEdit" type="LineEdit" parent="."]
+margin_left = 241.0
+margin_top = 92.0
+margin_right = 432.0
+margin_bottom = 126.0
+hint_tooltip = "Name for this tileset"
+text = "new_tileset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="columns_label" type="Label" parent="."]
+margin_left = 12.0
+margin_top = 129.0
+margin_right = 135.0
+margin_bottom = 170.0
+text = "Tileset Columns:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="columns_SpinBox" type="SpinBox" parent="."]
+margin_left = 241.808
+margin_top = 137.0
+margin_right = 327.808
+margin_bottom = 171.0
+min_value = 1.0
+value = 16.0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "Save the tileset Image"
+}
+
+[node name="single_image_button" type="CheckButton" parent="."]
+margin_left = 329.0
+margin_top = 133.0
+margin_right = 405.0
+margin_bottom = 173.0
+hint_tooltip = "[color=#FF0000]button to save the images in a single image[/color]
+When the button is activated, all tiles are saved
+in a single image, if not, each tile will be saved
+in an image for each one
+
+In a single image mode, all tiles are distributed as follows:
+
+[indent][color=#FF0000]·[/color] Animated Autotiles (Floors, Walls and Waterfalls))
+[color=#FF0000]·[/color] Autotiles (Floors, Walls and Waterfalls)
+[color=#FF0000]·[/color] Animated Single Tiles
+[color=#FF0000]·[/color] Single tiles[/indent]"
+focus_mode = 0
+mouse_default_cursor_shape = 2
+pressed = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="info_button" type="TextureButton" parent="."]
+margin_left = 402.0
+margin_top = 136.0
+margin_right = 429.0
+margin_bottom = 163.0
+hint_tooltip = "info"
+focus_mode = 0
+mouse_default_cursor_shape = 16
+enabled_focus_mode = 0
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="delete_button" to="." method="_on_delete_button_button_up"]
+[connection signal="text_changed" from="tilemap_name_LineEdit" to="." method="_on_tilemap_name_lineEdit_text_changed"]
+[connection signal="text_changed" from="tileset_name_LineEdit" to="." method="_on_tileset_name_lineEdit_text_changed"]
+[connection signal="value_changed" from="columns_SpinBox" to="." method="_on_columns_SpinBox_value_changed"]
+[connection signal="toggled" from="single_image_button" to="." method="_on_single_image_button_toggled"]
