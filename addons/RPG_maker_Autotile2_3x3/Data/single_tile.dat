@@ -1,0 +1,14 @@
+#TILE_ID#/name = "#TILE_NAME#"
+#TILE_ID#/texture = ExtResource( #RESOURCE_ID# )
+#TILE_ID#/tex_offset = Vector2( 0, 0 )
+#TILE_ID#/modulate = Color( 1, 1, 1, 1 )
+#TILE_ID#/region = #RECT#
+#TILE_ID#/tile_mode = 0
+#TILE_ID#/occluder_offset = Vector2( 0, 0 )
+#TILE_ID#/navigation_offset = Vector2( 0, 0 )
+#TILE_ID#/shape_offset = Vector2( 0, 0 )
+#TILE_ID#/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+#TILE_ID#/shape_one_way = false
+#TILE_ID#/shape_one_way_margin = 0.0
+#TILE_ID#/shapes = [  ]
+#TILE_ID#/z_index = 0

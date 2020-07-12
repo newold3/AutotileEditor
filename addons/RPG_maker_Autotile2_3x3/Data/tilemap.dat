@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="#TILESET_PATH#" type="TileSet" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "tool
+extends TileMap
+
+
+export(Dictionary) var animations = {
+#ANIMATIONS_DATA#
+}
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if !tile_set: return
+	for key in animations.keys():
+		var tile_id = int(key)
+		var animation = animations[key]
+		animation.time += delta
+		if animation.time >= animation.delay:
+			animation.time = 0
+			animation.frame += 1
+			if animation.frame >= animation.animation_rects.size():
+				animation.frame = 0
+			var current_rect = animation.animation_rects[animation.frame]
+			tile_set.tile_set_region(tile_id, current_rect)
+"
+
+[node name="TileMap" type="TileMap"]
+tile_set = ExtResource( 1 )
+cell_size = #TILE_SIZE#
+cell_quadrant_size = 32
+cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
+format = 1
+script = SubResource( 1 )
