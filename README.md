@@ -2,7 +2,7 @@
 
 Convert tilesets, autotiles and autotiles animated from RPG Maker to tilesets of Godot
 
-A simple demonstration video: https://youtu.be/rIYYSKdQGUY
+A simple demonstration video: (uploading...)
 
 ![GitHub Logo](preview.png)
 
