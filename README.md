@@ -8,7 +8,7 @@ A simple demonstration video: https://www.youtube.com/watch?v=YMDOobC4Jyg
 
 ## Compatibility
 
-Plugin version: Godot v3.2 
+Plugin version: Godot v3.2
 
 ## Features:
 

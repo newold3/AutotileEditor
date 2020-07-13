@@ -36,5 +36,5 @@ func _exit_tree():
 	pass
 
 # Plugin name:
-func get_plugin_name()-> String: 
+func get_plugin_name()-> String:
 	return "Create Autotile from RPG Makers tilesets";
