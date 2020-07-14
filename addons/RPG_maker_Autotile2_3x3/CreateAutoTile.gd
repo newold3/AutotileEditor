@@ -462,7 +462,7 @@ func get_selected_rect(position) -> Vector2:
 	if !data_tileset.has("vertical_tiles"): return Vector2(-1, -1)
 	var cs = data_tileset.current_selection
 	var ip = image_real.rect_position
-	cs.x = floor(position.x / data_tileset.selection_width) 
+	cs.x = floor(position.x / data_tileset.selection_width)
 	cs.y = floor(position.y / data_tileset.selection_height)
 	if (cs.x < ip.x or
 		cs.y < ip.y or
@@ -1495,7 +1495,7 @@ func _on_fast_export_button_toggled(button_pressed: bool) -> void:
 func get_export_configuration(index):
 	var result = {}
 	# rects = [x, y, columns, rows, type, animation_length, animation_direction]
-	# animation_direction => 1: Left to Right, 2: Up to Down 
+	# animation_direction => 1: Left to Right, 2: Up to Down
 	if index <= 6 or index > 12:
 		result.tile_width = 32
 		result.tile_height = 32
