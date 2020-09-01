@@ -35,6 +35,7 @@ Done!
 	* Update to version 1.1
 	* Added Auto-collision
 	* Added Auto-occlusion
+	* Added option to set level of compress of images before be saved
 	* Fixed minor bugs
 * 12/07/2020:
 	* Setup of the finished project on GitHub.
