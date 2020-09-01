@@ -30,6 +30,8 @@ func _process(delta: float) -> void:
 [node name="TileMap" type="TileMap"]
 tile_set = ExtResource( 1 )
 cell_size = #TILE_SIZE#
+cell_y_sort = true
+cell_tile_origin = 2
 cell_quadrant_size = 32
 cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
 format = 1

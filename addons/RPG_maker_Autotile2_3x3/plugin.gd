@@ -26,6 +26,7 @@ func clickedButton(ud):
 	ProjectSettings.set_setting("application/config/icon", _icon)
 	ProjectSettings.set_setting("application/config/name", _name)
 	ProjectSettings.save()
+	get_editor_interface().get_resource_filesystem().scan()
 
 
 # Remove menu button from canvas editor:
@@ -36,5 +37,5 @@ func _exit_tree():
 	pass
 
 # Plugin name:
-func get_plugin_name()-> String:
+func get_plugin_name()-> String: 
 	return "Create Autotile from RPG Makers tilesets";

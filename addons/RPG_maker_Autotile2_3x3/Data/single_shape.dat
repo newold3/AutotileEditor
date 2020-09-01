@@ -1,0 +1,7 @@
+{
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( #TILE_ID# ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}

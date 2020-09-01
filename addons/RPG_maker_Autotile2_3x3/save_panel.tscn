@@ -8,8 +8,8 @@
 
 [node name="save_panel" type="Panel"]
 margin_right = 440.0
-margin_bottom = 178.0
-rect_min_size = Vector2( 440, 178 )
+margin_bottom = 264.0
+rect_min_size = Vector2( 440, 264 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -149,8 +149,45 @@ texture_hover = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="compression_label" type="Label" parent="."]
+margin_left = 12.0
+margin_top = 171.0
+margin_right = 135.0
+margin_bottom = 212.0
+text = "Compression:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="compression_SpinBox" type="SpinBox" parent="."]
+margin_left = 241.808
+margin_top = 179.0
+margin_right = 315.808
+margin_bottom = 213.0
+hint_tooltip = "Compresses the image to use less memory.
+
+[color=red]0[/color] = No compression (no loss of quality)"
+max_value = 1.0
+step = 0.01
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="check_collisions_and_occlusions_Button" type="Button" parent="."]
+margin_left = 9.0
+margin_top = 219.0
+margin_right = 266.0
+margin_bottom = 239.0
+mouse_default_cursor_shape = 2
+text = "Check tiles's Collisions and occlusions"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="button_up" from="delete_button" to="." method="_on_delete_button_button_up"]
 [connection signal="text_changed" from="tilemap_name_LineEdit" to="." method="_on_tilemap_name_lineEdit_text_changed"]
 [connection signal="text_changed" from="tileset_name_LineEdit" to="." method="_on_tileset_name_lineEdit_text_changed"]
 [connection signal="value_changed" from="columns_SpinBox" to="." method="_on_columns_SpinBox_value_changed"]
 [connection signal="toggled" from="single_image_button" to="." method="_on_single_image_button_toggled"]
+[connection signal="button_down" from="check_collisions_and_occlusions_Button" to="." method="_on_check_collisions_and_occlusions_Button_button_down"]

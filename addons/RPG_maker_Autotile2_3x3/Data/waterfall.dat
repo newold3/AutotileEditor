@@ -13,11 +13,13 @@
 #TILE_ID#/autotile/navpoly_map = [  ]
 #TILE_ID#/autotile/priority_map = [  ]
 #TILE_ID#/autotile/z_index_map = [  ]
+#OCCLUDER#
 #TILE_ID#/occluder_offset = Vector2( 0, 0 )
 #TILE_ID#/navigation_offset = Vector2( 0, 0 )
 #TILE_ID#/shape_offset = Vector2( 0, 0 )
 #TILE_ID#/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+#SHAPE#
 #TILE_ID#/shape_one_way = false
 #TILE_ID#/shape_one_way_margin = 0.0
-#TILE_ID#/shapes = [  ]
+#TILE_ID#/shapes = [ #SHAPEEXTENDES# ]
 #TILE_ID#/z_index = 0

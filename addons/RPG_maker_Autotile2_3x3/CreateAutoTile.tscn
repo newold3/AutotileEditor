@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=2]
+[gd_scene load_steps=123 format=2]
 
 [ext_resource path="Graphics/center_button_normal.png" type="Texture" id=1]
 [ext_resource path="CreateAutoTile.gd" type="Script" id=2]
@@ -35,6 +35,9 @@
 [ext_resource path="Graphics/edit_button_disabled.png" type="Texture" id=33]
 [ext_resource path="Graphics/edit_button_over.png" type="Texture" id=34]
 [ext_resource path="Graphics/edit_button_normal.png" type="Texture" id=35]
+[ext_resource path="Graphics/icon_collision_complex.png" type="Texture" id=36]
+[ext_resource path="Graphics/icon_collision_simple.png" type="Texture" id=37]
+[ext_resource path="Graphics/icon_no_collision.png" type="Texture" id=38]
 
 [sub_resource type="DynamicFont" id=1]
 size = 13
@@ -117,13 +120,13 @@ outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_bottom = -8
 font_data = ExtResource( 27 )
 
-[sub_resource type="DynamicFont" id=84]
+[sub_resource type="DynamicFont" id=18]
 size = 18
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 27 )
 
-[sub_resource type="StyleBoxFlat" id=18]
+[sub_resource type="StyleBoxFlat" id=19]
 bg_color = Color( 0.8, 0.8, 0.8, 1 )
 border_width_left = 8
 border_width_top = 8
@@ -135,13 +138,13 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="InputEventKey" id=19]
+[sub_resource type="InputEventKey" id=20]
 scancode = 16777217
 
-[sub_resource type="ShortCut" id=20]
-shortcut = SubResource( 19 )
+[sub_resource type="ShortCut" id=21]
+shortcut = SubResource( 20 )
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=22]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -181,312 +184,312 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.0627451 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CanvasItemMaterial" id=22]
+[sub_resource type="CanvasItemMaterial" id=23]
 blend_mode = 1
-
-[sub_resource type="AtlasTexture" id=23]
-flags = 4
-atlas = ExtResource( 32 )
-region = Rect2( 0, 0, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=24]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 500, 0, 500, 500 )
+region = Rect2( 0, 0, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=25]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 1000, 0, 500, 500 )
+region = Rect2( 500, 0, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=26]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 1500, 0, 500, 500 )
+region = Rect2( 1000, 0, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=27]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 2000, 0, 500, 500 )
+region = Rect2( 1500, 0, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=28]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 2500, 0, 500, 500 )
+region = Rect2( 2000, 0, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=29]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 3000, 0, 500, 500 )
+region = Rect2( 2500, 0, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=30]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 3500, 0, 500, 500 )
+region = Rect2( 3000, 0, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=31]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 4000, 0, 500, 500 )
+region = Rect2( 3500, 0, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=32]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 4500, 0, 500, 500 )
+region = Rect2( 4000, 0, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=33]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 0, 500, 500, 500 )
+region = Rect2( 4500, 0, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=34]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 500, 500, 500, 500 )
+region = Rect2( 0, 500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=35]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 1000, 500, 500, 500 )
+region = Rect2( 500, 500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=36]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 1500, 500, 500, 500 )
+region = Rect2( 1000, 500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=37]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 2000, 500, 500, 500 )
+region = Rect2( 1500, 500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=38]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 2500, 500, 500, 500 )
+region = Rect2( 2000, 500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=39]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 3000, 500, 500, 500 )
+region = Rect2( 2500, 500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=40]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 3500, 500, 500, 500 )
+region = Rect2( 3000, 500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=41]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 4000, 500, 500, 500 )
+region = Rect2( 3500, 500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=42]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 4500, 500, 500, 500 )
+region = Rect2( 4000, 500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=43]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 0, 1000, 500, 500 )
+region = Rect2( 4500, 500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=44]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 500, 1000, 500, 500 )
+region = Rect2( 0, 1000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=45]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 1000, 1000, 500, 500 )
+region = Rect2( 500, 1000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=46]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 1500, 1000, 500, 500 )
+region = Rect2( 1000, 1000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=47]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 2000, 1000, 500, 500 )
+region = Rect2( 1500, 1000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=48]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 2500, 1000, 500, 500 )
+region = Rect2( 2000, 1000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=49]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 3000, 1000, 500, 500 )
+region = Rect2( 2500, 1000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=50]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 3500, 1000, 500, 500 )
+region = Rect2( 3000, 1000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=51]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 4000, 1000, 500, 500 )
+region = Rect2( 3500, 1000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=52]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 4500, 1000, 500, 500 )
+region = Rect2( 4000, 1000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=53]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 0, 1500, 500, 500 )
+region = Rect2( 4500, 1000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=54]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 500, 1500, 500, 500 )
+region = Rect2( 0, 1500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=55]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 1000, 1500, 500, 500 )
+region = Rect2( 500, 1500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=56]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 1500, 1500, 500, 500 )
+region = Rect2( 1000, 1500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=57]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 2000, 1500, 500, 500 )
+region = Rect2( 1500, 1500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=58]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 2500, 1500, 500, 500 )
+region = Rect2( 2000, 1500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=59]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 3000, 1500, 500, 500 )
+region = Rect2( 2500, 1500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=60]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 3500, 1500, 500, 500 )
+region = Rect2( 3000, 1500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=61]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 4000, 1500, 500, 500 )
+region = Rect2( 3500, 1500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=62]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 4500, 1500, 500, 500 )
+region = Rect2( 4000, 1500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=63]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 0, 2000, 500, 500 )
+region = Rect2( 4500, 1500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=64]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 500, 2000, 500, 500 )
+region = Rect2( 0, 2000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=65]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 1000, 2000, 500, 500 )
+region = Rect2( 500, 2000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=66]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 1500, 2000, 500, 500 )
+region = Rect2( 1000, 2000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=67]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 2000, 2000, 500, 500 )
+region = Rect2( 1500, 2000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=68]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 2500, 2000, 500, 500 )
+region = Rect2( 2000, 2000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=69]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 3000, 2000, 500, 500 )
+region = Rect2( 2500, 2000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=70]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 3500, 2000, 500, 500 )
+region = Rect2( 3000, 2000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=71]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 4000, 2000, 500, 500 )
+region = Rect2( 3500, 2000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=72]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 4500, 2000, 500, 500 )
+region = Rect2( 4000, 2000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=73]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 0, 2500, 500, 500 )
+region = Rect2( 4500, 2000, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=74]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 500, 2500, 500, 500 )
+region = Rect2( 0, 2500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=75]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 1000, 2500, 500, 500 )
+region = Rect2( 500, 2500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=76]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 1500, 2500, 500, 500 )
+region = Rect2( 1000, 2500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=77]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 2000, 2500, 500, 500 )
+region = Rect2( 1500, 2500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=78]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 2500, 2500, 500, 500 )
+region = Rect2( 2000, 2500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=79]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 3000, 2500, 500, 500 )
+region = Rect2( 2500, 2500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=80]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 3500, 2500, 500, 500 )
+region = Rect2( 3000, 2500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=81]
 flags = 4
 atlas = ExtResource( 32 )
-region = Rect2( 4000, 2500, 500, 500 )
+region = Rect2( 3500, 2500, 500, 500 )
 
 [sub_resource type="AtlasTexture" id=82]
 flags = 4
 atlas = ExtResource( 32 )
+region = Rect2( 4000, 2500, 500, 500 )
+
+[sub_resource type="AtlasTexture" id=83]
+flags = 4
+atlas = ExtResource( 32 )
 region = Rect2( 4500, 2500, 500, 500 )
 
-[sub_resource type="SpriteFrames" id=83]
+[sub_resource type="SpriteFrames" id=84]
 animations = [ {
-"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ) ],
+"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ) ],
 "loop": true,
 "name": "loading",
 "speed": 5.0
@@ -1010,7 +1013,7 @@ margin_left = 315.0
 margin_top = 52.0
 margin_right = 347.0
 margin_bottom = 84.0
-hint_tooltip = "Change the name of the selected tile and its animation speed.
+hint_tooltip = "Change the name, collision type, occlusion and animation speed of the selected tile.
 You can [color=#FF0000]double-click[/color] on any item on the list to perform this same action"
 mouse_default_cursor_shape = 2
 disabled = true
@@ -1427,10 +1430,9 @@ color = Color( 0, 0, 0, 0.815686 )
 visible = false
 margin_left = 635.0
 margin_top = 336.0
-margin_right = 987.0
-margin_bottom = 423.0
+margin_right = 990.0
+margin_bottom = 561.0
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -1444,6 +1446,9 @@ margin_top = 2.0
 margin_right = 263.0
 margin_bottom = 43.0
 text = "Name for this tile"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LineEdit" type="LineEdit" parent="create_autotile_dialog"]
 margin_left = 11.0
@@ -1452,21 +1457,96 @@ margin_right = 297.0
 margin_bottom = 79.0
 caret_blink = true
 
+[node name="Label2" type="Label" parent="create_autotile_dialog"]
+margin_left = 15.0
+margin_top = 79.0
+margin_right = 263.0
+margin_bottom = 120.0
+text = "Collision Type"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton" type="OptionButton" parent="create_autotile_dialog"]
+margin_left = 11.0
+margin_top = 121.0
+margin_right = 231.0
+margin_bottom = 155.0
+hint_tooltip = "Select type of collision for this tile:
+
+[color=green]NO COLLISION[/color]: this tile has not a collision
+[color=green]SIMPLE COLLISION[/color]: this tile has a rectangle collision
+     (includes all transparent and non-transparent pixels)
+[color=green]COMPLEX COLLISION[/color] * : this tile has a convex polygon collision
+     (includes only non-transparent pixels)
+
+* [color=red]Autotiles can only used SIMPLE COLLISIONS[/color]"
+mouse_default_cursor_shape = 2
+text = "No collision"
+icon = ExtResource( 38 )
+items = [ "No collision", ExtResource( 38 ), false, 0, null, "Simple Collision", ExtResource( 37 ), false, 1, null, "Complex Collision", ExtResource( 36 ), false, 2, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="create_autotile_dialog"]
+margin_left = 235.0
+margin_top = 121.0
+margin_right = 321.0
+margin_bottom = 155.0
+hint_tooltip = "When collision type is equal to \"[color=red]simple collision[/color]\"
+you can set what percentage of the tile
+will have collision starting from the bottom to up."
+min_value = 1.0
+value = 100.0
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="create_autotile_dialog"]
+margin_left = 323.0
+margin_top = 113.0
+margin_right = 363.0
+margin_bottom = 154.0
+text = "%"
+
+[node name="Label3" type="Label" parent="create_autotile_dialog"]
+margin_left = 15.0
+margin_top = 151.0
+margin_right = 263.0
+margin_bottom = 192.0
+text = "Occlusion"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton" type="CheckButton" parent="create_autotile_dialog"]
+margin_top = 187.0
+margin_right = 76.0
+margin_bottom = 227.0
+hint_tooltip = "Occludes light cast by a Light2D, casting shadows."
+mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="close_button" type="TextureButton" parent="create_autotile_dialog"]
-margin_left = 313.0
-margin_top = 6.5
-margin_right = 345.0
-margin_bottom = 38.5
+margin_left = 273.0
+margin_top = 184.0
+margin_right = 305.0
+margin_bottom = 216.0
 mouse_default_cursor_shape = 2
 shortcut = SubResource( 14 )
 texture_normal = ExtResource( 14 )
 texture_hover = ExtResource( 17 )
 
 [node name="ok_button" type="TextureButton" parent="create_autotile_dialog"]
-margin_left = 314.0
-margin_top = 45.0
-margin_right = 346.0
-margin_bottom = 77.0
+margin_left = 313.0
+margin_top = 184.0
+margin_right = 345.0
+margin_bottom = 216.0
 mouse_default_cursor_shape = 2
 shortcut = SubResource( 16 )
 texture_normal = ExtResource( 16 )
@@ -1476,8 +1556,11 @@ texture_hover = ExtResource( 11 )
 visible = false
 margin_left = 492.0
 margin_top = 432.0
-margin_right = 804.0
-margin_bottom = 595.0
+margin_right = 845.0
+margin_bottom = 717.0
+hint_tooltip = "When collision type is equal to \"simple collision\"
+you can set what percentage of the tile
+will have collision starting from the bottom to up."
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -1494,6 +1577,9 @@ margin_right = 263.0
 margin_bottom = 43.0
 rect_scale = Vector2( 0.9, 1 )
 text = "Name for tile selected"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LineEdit" type="LineEdit" parent="edit_autotile_dialog"]
 margin_left = 11.0
@@ -1502,28 +1588,104 @@ margin_right = 297.0
 margin_bottom = 79.0
 caret_blink = true
 
+[node name="Label3" type="Label" parent="edit_autotile_dialog"]
+margin_left = 15.0
+margin_top = 72.0
+margin_right = 328.0
+margin_bottom = 113.0
+rect_scale = Vector2( 0.9, 1 )
+text = "Collision type"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton" type="OptionButton" parent="edit_autotile_dialog"]
+margin_left = 11.0
+margin_top = 113.0
+margin_right = 231.0
+margin_bottom = 147.0
+hint_tooltip = "Select type of collision for this tile:
+
+[color=green]NO COLLISION[/color]: this tile has not a collision
+[color=green]SIMPLE COLLISION[/color]: this tile has a rectangle collision
+     (includes all transparent and non-transparent pixels)
+[color=green]COMPLEX COLLISION[/color] * : this tile has a convex polygon collision
+     (includes only non-transparent pixels)
+
+* [color=red]Autotiles can only used SIMPLE COLLISIONS[/color]"
+mouse_default_cursor_shape = 2
+text = "No Collision"
+icon = ExtResource( 38 )
+items = [ "No Collision", ExtResource( 38 ), false, 0, null, "Collision Simple", ExtResource( 37 ), false, 1, null, "Collision Complex", ExtResource( 36 ), false, 2, null ]
+selected = 0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SpinBox2" type="SpinBox" parent="edit_autotile_dialog"]
+margin_left = 237.0
+margin_top = 114.0
+margin_right = 323.0
+margin_bottom = 148.0
+hint_tooltip = "When collision type is equal to \"[color=red]simple collision[/color]\"
+you can set what percentage of the tile
+will have collision starting from the bottom to up."
+min_value = 1.0
+value = 100.0
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="edit_autotile_dialog"]
+margin_left = 324.6
+margin_top = 105.0
+margin_right = 364.6
+margin_bottom = 146.0
+text = "%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="edit_autotile_dialog"]
+margin_left = 15.0
+margin_top = 140.0
+margin_right = 328.0
+margin_bottom = 181.0
+rect_scale = Vector2( 0.9, 1 )
+text = "Occlusion"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton" type="CheckButton" parent="edit_autotile_dialog"]
+margin_top = 172.0
+margin_right = 76.0
+margin_bottom = 212.0
+
 [node name="Label2" type="Label" parent="edit_autotile_dialog"]
 margin_left = 15.0
-margin_top = 73.0
+margin_top = 199.0
 margin_right = 263.0
-margin_bottom = 114.0
+margin_bottom = 240.0
 text = "Animation Speed"
 
 [node name="SpinBox" type="SpinBox" parent="edit_autotile_dialog"]
 margin_left = 11.0
-margin_top = 116.0
+margin_top = 242.0
 margin_right = 146.0
-margin_bottom = 150.0
+margin_bottom = 276.0
+hint_tooltip = "Occludes light cast by a Light2D, casting shadows."
 min_value = 0.01
 max_value = 9999.0
 step = 0.1
 value = 0.01
 
 [node name="close_button" type="TextureButton" parent="edit_autotile_dialog"]
-margin_left = 263.0
-margin_top = 117.0
-margin_right = 295.0
-margin_bottom = 149.0
+margin_left = 310.0
+margin_top = 243.0
+margin_right = 342.0
+margin_bottom = 275.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource( 14 )
@@ -1531,10 +1693,10 @@ texture_normal = ExtResource( 14 )
 texture_hover = ExtResource( 17 )
 
 [node name="ok_button" type="TextureButton" parent="edit_autotile_dialog"]
-margin_left = 222.0
-margin_top = 117.0
-margin_right = 254.0
-margin_bottom = 149.0
+margin_left = 269.0
+margin_top = 243.0
+margin_right = 301.0
+margin_bottom = 275.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut = SubResource( 16 )
@@ -1599,7 +1761,7 @@ margin_left = 89.0
 margin_top = 10.0
 margin_right = 514.0
 margin_bottom = 126.0
-custom_fonts/normal_font = SubResource( 84 )
+custom_fonts/normal_font = SubResource( 18 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1614,8 +1776,8 @@ anchor_bottom = 0.5
 margin_left = -262.0
 margin_top = -277.0
 margin_right = 268.0
-margin_bottom = 128.0
-custom_styles/panel = SubResource( 18 )
+margin_bottom = 178.0
+custom_styles/panel = SubResource( 19 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -1644,7 +1806,7 @@ __meta__ = {
 margin_left = 25.0
 margin_top = 61.0
 margin_right = 506.0
-margin_bottom = 309.0
+margin_bottom = 361.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1669,7 +1831,7 @@ margin_right = 510.0
 margin_bottom = 47.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
-shortcut = SubResource( 20 )
+shortcut = SubResource( 21 )
 texture_normal = ExtResource( 14 )
 texture_hover = ExtResource( 17 )
 __meta__ = {
@@ -1678,16 +1840,16 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="SaveDialog"]
 margin_left = 32.0
-margin_top = 311.0
+margin_top = 362.0
 margin_right = 265.0
-margin_bottom = 352.0
+margin_bottom = 403.0
 text = "Save Tilemaps in:"
 
 [node name="LineEdit" type="LineEdit" parent="SaveDialog"]
 margin_left = 29.0
-margin_top = 355.0
+margin_top = 406.0
 margin_right = 421.0
-margin_bottom = 389.0
+margin_bottom = 440.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 text = "res://Scenes/"
@@ -1698,9 +1860,9 @@ __meta__ = {
 
 [node name="Button" type="Button" parent="SaveDialog"]
 margin_left = 437.0
-margin_top = 323.0
+margin_top = 374.0
 margin_right = 504.0
-margin_bottom = 386.0
+margin_bottom = 437.0
 hint_tooltip = "Save all to disk in the paths selected.
 
 If the destination folder contains files with the same names
@@ -1709,7 +1871,8 @@ being saved to avoid conflicts"
 focus_mode = 0
 mouse_default_cursor_shape = 2
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="SaveDialog/Button"]
@@ -1743,7 +1906,7 @@ rect_scale = Vector2( 1, 0.9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "CursorsBlink"
-anims/CursorsBlink = SubResource( 21 )
+anims/CursorsBlink = SubResource( 22 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
@@ -1763,11 +1926,11 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="saving_all_animation"]
-material = SubResource( 22 )
+material = SubResource( 23 )
 position = Vector2( 494, 383 )
-frames = SubResource( 83 )
+frames = SubResource( 84 )
 animation = "loading"
-frame = 38
+frame = 11
 speed_scale = 10.0
 playing = true
 
@@ -1795,6 +1958,218 @@ text = "Saving all tiles to disk. wait a moment please"
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="ultimate_revision_dialog" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.87451 )
+
+[node name="WindowDialog" type="WindowDialog" parent="ultimate_revision_dialog"]
+margin_left = 153.0
+margin_top = 184.0
+margin_right = 823.0
+margin_bottom = 646.0
+custom_constants/close_h_ofs = -16384
+window_title = "Edit Collision And Occlusion"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ultimate_revision_dialog/WindowDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -5.99994
+margin_bottom = -2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer"]
+margin_right = 240.0
+margin_bottom = 454.0
+rect_min_size = Vector2( 240, 450 )
+
+[node name="Label" type="Label" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/VBoxContainer"]
+margin_right = 240.0
+margin_bottom = 41.0
+text = "TILES"
+align = 1
+
+[node name="ItemList" type="ItemList" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/VBoxContainer"]
+margin_top = 45.0
+margin_right = 240.0
+margin_bottom = 454.0
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer"]
+margin_left = 244.0
+margin_right = 658.0
+margin_bottom = 454.0
+size_flags_horizontal = 3
+
+[node name="Panel4" type="Panel" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel"]
+margin_left = 111.0
+margin_top = 62.4998
+margin_right = 271.0
+margin_bottom = 276.5
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel4"]
+anchor_right = 1.0
+margin_top = -44.0
+margin_right = 18.0
+rect_scale = Vector2( 0.9, 1.2 )
+custom_colors/font_color = Color( 0.396078, 0.858824, 1, 1 )
+text = "Preview Tile"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -3.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel4/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="preview_autotile_selected" type="TextureRect" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel"]
+margin_left = 28.0
+margin_top = 290.5
+margin_right = 384.0
+margin_bottom = 437.5
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label6" type="Label" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel"]
+margin_left = 12.0
+margin_top = 6.49976
+margin_right = 325.0
+margin_bottom = 47.4998
+rect_scale = Vector2( 0.9, 1 )
+text = "Collision type"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton2" type="OptionButton" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel"]
+margin_left = 8.0
+margin_top = 47.4998
+margin_right = 228.0
+margin_bottom = 81.4998
+hint_tooltip = "Select type of collision for this tile:
+
+[color=green]NO COLLISION[/color]: this tile has not a collision
+[color=green]SIMPLE COLLISION[/color]: this tile has a rectangle collision
+     (includes all transparent and non-transparent pixels)
+[color=green]COMPLEX COLLISION[/color] * : this tile has a convex polygon collision
+     (includes only non-transparent pixels)
+
+* [color=red]Autotiles can only used SIMPLE COLLISIONS[/color]"
+mouse_default_cursor_shape = 2
+text = "No Collision"
+icon = ExtResource( 38 )
+items = [ "No Collision", ExtResource( 38 ), false, 0, null, "Collision Simple", ExtResource( 37 ), false, 1, null, "Collision Complex", ExtResource( 36 ), false, 2, null ]
+selected = 0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SpinBox3" type="SpinBox" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel"]
+margin_left = 234.0
+margin_top = 48.4998
+margin_right = 320.0
+margin_bottom = 82.4998
+hint_tooltip = "When collision type is equal to \"[color=red]simple collision[/color]\"
+you can set what percentage of the tile
+will have collision starting from the bottom to up."
+min_value = 1.0
+value = 100.0
+editable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel"]
+margin_left = 321.6
+margin_top = 39.4998
+margin_right = 361.6
+margin_bottom = 80.4998
+text = "%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel"]
+margin_left = 12.0
+margin_top = 74.4998
+margin_right = 325.0
+margin_bottom = 115.5
+rect_scale = Vector2( 0.9, 1 )
+text = "Occlusion"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton2" type="CheckButton" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel"]
+margin_left = -3.0
+margin_top = 106.5
+margin_right = 73.0
+margin_bottom = 146.5
+
+[node name="TextureButton" type="TextureButton" parent="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel"]
+margin_left = 369.0
+margin_top = 13.5313
+margin_right = 401.0
+margin_bottom = 45.5313
+hint_tooltip = "Close Dialog"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 14 )
+texture_hover = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HINTS" type="CanvasLayer" parent="."]
 [connection signal="tree_exiting" from="." to="." method="_on_CreateAutoTile_tree_exiting"]
 [connection signal="item_selected" from="ImageList/list" to="." method="_on_list_item_selected"]
 [connection signal="button_up" from="ImageList/Button" to="." method="_on_ImageListButton_button_up"]
@@ -1829,9 +2204,11 @@ __meta__ = {
 [connection signal="button_up" from="Panel3/save_all_Button" to="." method="_on_save_all_Button_button_up"]
 [connection signal="gui_input" from="hide_behind_controls" to="." method="_on_hide_behind_controls_gui_input"]
 [connection signal="visibility_changed" from="create_autotile_dialog/LineEdit" to="." method="_on_LineEdit_visibility_changed"]
+[connection signal="item_selected" from="create_autotile_dialog/OptionButton" to="." method="_on_create_autotile_OptionButton_item_selected"]
 [connection signal="button_up" from="create_autotile_dialog/close_button" to="." method="hide_all_dialogs"]
 [connection signal="button_up" from="create_autotile_dialog/ok_button" to="." method="_on_create_autotile_dialog_ok_button_pressed"]
 [connection signal="focus_exited" from="create_autotile_dialog/ok_button" to="." method="_on_create_autotile_dialog_ok_button_focus_exited"]
+[connection signal="item_selected" from="edit_autotile_dialog/OptionButton" to="." method="_on_edit_autotile_OptionButton_item_selected"]
 [connection signal="button_up" from="edit_autotile_dialog/close_button" to="." method="hide_all_dialogs"]
 [connection signal="button_up" from="edit_autotile_dialog/ok_button" to="." method="_on_edit_autotile_ok_button_button_up"]
 [connection signal="gui_input" from="error1_dialog" to="." method="_on_error_dialog_gui_input"]
@@ -1844,5 +2221,12 @@ __meta__ = {
 [connection signal="hide" from="CustomFileDialog" to="." method="_on_CustomFileDialog_hide"]
 [connection signal="select_files" from="CustomFileDialog" to="." method="_on_CustomFileDialog_select_files"]
 [connection signal="timeout" from="Timer" to="." method="animate_autotile_selected"]
+[connection signal="gui_input" from="ultimate_revision_dialog" to="." method="_on_ultimate_revision_dialog_gui_input"]
+[connection signal="hide" from="ultimate_revision_dialog/WindowDialog" to="." method="_on_ultimate_WindowDialog_hide"]
+[connection signal="item_selected" from="ultimate_revision_dialog/WindowDialog/HBoxContainer/VBoxContainer/ItemList" to="." method="update_ultimate_autotile_preview"]
+[connection signal="item_selected" from="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel/OptionButton2" to="." method="_on_ultimate_collision_type_OptionButton_item_selected"]
+[connection signal="value_changed" from="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel/SpinBox3" to="." method="_on_ultimate_percent_SpinBox_value_changed"]
+[connection signal="toggled" from="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel/CheckButton2" to="." method="_on_ultimate_occlusion_CheckButton_toggled"]
+[connection signal="button_down" from="ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/TextureButton" to="." method="_on_ultimate_close_button_down"]
 
 [editable path="CustomFileDialog"]

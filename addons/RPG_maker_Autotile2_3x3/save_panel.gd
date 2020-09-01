@@ -7,6 +7,7 @@ onready var tilemap_name_lineEdit	= $tilemap_name_LineEdit
 onready var tileset_name_lineEdit	= $tileset_name_LineEdit
 onready var info_button				= $info_button
 onready var single_imagen_button	= $single_image_button
+onready var compression_spinBox		= $compression_SpinBox
 
 var id = 0
 
@@ -20,6 +21,7 @@ var data = {
 }
 
 signal deleted(id)
+signal show_ultimate_revision_dialog_request(tiles)
 
 func set_initial_values(_title := "", _tilemap_name := "", _tileset_name := "",
 	_columns := 16, _data = null):
@@ -37,6 +39,8 @@ func set_tilemap_path(_tilemap_path):
 	update_help()
 	
 func get_values():
+	columns_spinBox.apply()
+	compression_spinBox.apply()
 	return {
 		"tilemap_name"		: tilemap_name_lineEdit.text,
 		"tileset_name"		: tileset_name_lineEdit.text,
@@ -45,6 +49,7 @@ func get_values():
 		"data"				: data,
 		"tile_width"		: data.tile_width,
 		"tile_height"		: data.tile_height,
+		"compression"		: compression_spinBox.value
 	}
 
 
@@ -108,3 +113,7 @@ func _on_single_image_button_toggled(button_pressed: bool) -> void:
 
 
 
+
+
+func _on_check_collisions_and_occlusions_Button_button_down() -> void:
+	emit_signal("show_ultimate_revision_dialog_request", data.tiles)

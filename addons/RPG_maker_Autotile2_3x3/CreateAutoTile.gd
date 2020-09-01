@@ -28,6 +28,9 @@ onready var config_layout2_button		= $AutoTileConfig/tile_layout/OptionButton2
 onready var config_layout_label			= $AutoTileConfig/tile_layout
 onready var create_autotile_dialog		= $create_autotile_dialog
 onready var create_autotile_dialog_t	= $create_autotile_dialog/LineEdit
+onready var create_autotile_dialog_c	= $create_autotile_dialog/OptionButton
+onready var create_autotile_dialog_o	= $create_autotile_dialog/CheckButton
+onready var create_autotile_dialog_s	= $create_autotile_dialog/SpinBox
 onready var edit_autotile_button		= $AutoTileList/edit_autotile_button
 onready var move_autotiles_up_button	= $AutoTileList/move_autotile_up_button
 onready var move_autotiles_down_button	= $AutoTileList/move_autotile_down_button
@@ -44,11 +47,21 @@ onready var save_dialog_tilemap_path	= $SaveDialog/LineEdit
 onready var save_all_button				= $Panel3/save_all_Button
 onready var edit_autotile_dialog		= $edit_autotile_dialog
 onready var name_autotile_dialog_b		= $edit_autotile_dialog/LineEdit
+onready var collision_autotile_dialog_b	= $edit_autotile_dialog/OptionButton
+onready var occlusion_autotile_dialog_b	= $edit_autotile_dialog/CheckButton
 onready var speed_autotile_dialog_b		= $edit_autotile_dialog/SpinBox
+onready var percent_autotile_dialog_b	= $edit_autotile_dialog/SpinBox2
 onready var fast_export_button			= $Panel/fast_export_button
 onready var saving_animation			= $saving_all_animation
 onready var timer						= $Timer
 
+onready var ultimate_dialog_layer		= $ultimate_revision_dialog
+onready var ultimate_dialog				= $ultimate_revision_dialog/WindowDialog
+onready var ultimate_dialog_itemlist	= $ultimate_revision_dialog/WindowDialog/HBoxContainer/VBoxContainer/ItemList
+onready var ultimate_dialog_preview_t	= $ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel4/preview_autotile_selected
+onready var ultimate_dialog_collision	= $ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel/OptionButton2
+onready var ultimate_dialog_percent		= $ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel/SpinBox3
+onready var ultimate_dialog_occlusion	= $ultimate_revision_dialog/WindowDialog/HBoxContainer/Panel/Panel/CheckButton2
 
 var save_panel_scene = preload("save_panel.tscn")
 
@@ -66,6 +79,10 @@ var data_tileset = {
 	"tiles"				: []
 }
 
+var ultimate_tiles = []
+var ultimate_last_tile = null
+var no_action = false
+
 class Autotile:
 	var name 				:= ""
 	var path 				:= ""
@@ -77,6 +94,9 @@ class Autotile:
 	var animation			:= []
 	var frame				:= 0
 	var animation_delay		:= 0.18
+	var collision_type		:= 0
+	var occlusion			:= false
+	var collision_percent	:= 100
 	
 	func duplicate() -> Autotile:
 		var autotile = Autotile.new()
@@ -87,6 +107,9 @@ class Autotile:
 		autotile.animation_delay	= animation_delay
 		autotile.tile_width 		= tile_width
 		autotile.tile_height 		= tile_height
+		autotile.collision_type		= collision_type
+		autotile.occlusion			= occlusion
+		autotile.collision_percent	= collision_percent
 		return autotile
 		
 	func get_id() -> String:
@@ -138,7 +161,7 @@ func _ready() -> void:
 	
 	var path = get_tree().current_scene.filename.get_base_dir()
 	for id in ["tilemap", "tileset", "tileset_header", "single_tile",
-		"floor", "wall", "waterfall"]:
+		"floor", "wall", "waterfall", "single_shape"]:
 		save_files[id] = load_file_text("%s/Data/%s.dat" % [path, id])
 	
 	update_style_for_input_and_text_boxes(self)
@@ -152,7 +175,7 @@ func _ready() -> void:
 	fill_image_list()
 	
 	tooltip = customToolTip.instance()
-	add_child(tooltip)
+	$HINTS.add_child(tooltip)
 	tooltip.visible = false
 	
 	fast_export_button.text = "Fast Export"
@@ -462,7 +485,7 @@ func get_selected_rect(position) -> Vector2:
 	if !data_tileset.has("vertical_tiles"): return Vector2(-1, -1)
 	var cs = data_tileset.current_selection
 	var ip = image_real.rect_position
-	cs.x = floor(position.x / data_tileset.selection_width)
+	cs.x = floor(position.x / data_tileset.selection_width) 
 	cs.y = floor(position.y / data_tileset.selection_height)
 	if (cs.x < ip.x or
 		cs.y < ip.y or
@@ -789,10 +812,17 @@ func _on_create_autotile_Button_button_up() -> void:
 
 func _on_create_autotile_dialog_ok_button_pressed() -> void:
 	if !create_autotile_dialog.visible: return
+	create_autotile_dialog_s.apply()
 	var text = create_autotile_dialog_t.text
+	var collision_type = create_autotile_dialog_c.get_selected_id()
+	var occlusion = create_autotile_dialog_o.pressed
+	var collision_percent = create_autotile_dialog_s.value
 	if text.length() > 0:
 		var new_autotile = Autotile.new()
 		new_autotile.name = get_fix_name_for_paths(text)
+		new_autotile.collision_type = collision_type
+		new_autotile.occlusion = occlusion
+		new_autotile.collision_percent = collision_percent
 		if preset_button.selected != 8:
 			new_autotile.type = (config_layout_button.get_selected_id() +
 				config_layout2_button.get_selected_id())
@@ -1121,8 +1151,15 @@ func _on_edit_autotile_button_button_up() -> void:
 	autotile_list.emit_signal("item_selected", ids[-1])
 	var autotile_name 				= data_tileset.tiles[ids[-1]].name
 	var autotile_animation_delay 	= data_tileset.tiles[ids[-1]].animation_delay
+	var collision_type				= data_tileset.tiles[ids[-1]].collision_type
+	var occlusion					= data_tileset.tiles[ids[-1]].occlusion
+	var collision_percent			= data_tileset.tiles[ids[-1]].collision_percent
 	name_autotile_dialog_b.text = autotile_name
 	speed_autotile_dialog_b.value = autotile_animation_delay
+	percent_autotile_dialog_b.value = collision_percent
+	percent_autotile_dialog_b.editable = collision_type == 1
+	collision_autotile_dialog_b.select(collision_type)
+	occlusion_autotile_dialog_b.pressed = occlusion
 	var pos = get_global_mouse_position() + Vector2(31, 26)
 	pos.x -= edit_autotile_dialog.rect_size.x
 	edit_autotile_dialog.rect_global_position = pos
@@ -1147,8 +1184,15 @@ func _on_edit_autotile_ok_button_button_up():
 			]
 		)
 	speed_autotile_dialog_b.apply()
+	percent_autotile_dialog_b.apply()
 	var autotile_animation_delay 	= speed_autotile_dialog_b.value
+	var collision_type				= collision_autotile_dialog_b.get_selected_id()
+	var occlusion					= occlusion_autotile_dialog_b.pressed
+	var collision_percent			= percent_autotile_dialog_b.value
 	data_tileset.tiles[id].animation_delay = autotile_animation_delay
+	data_tileset.tiles[id].collision_type = collision_type
+	data_tileset.tiles[id].occlusion = occlusion
+	data_tileset.tiles[id].collision_percent = collision_percent
 	timer.stop()
 	timer.wait_time = autotile_animation_delay
 	timer.start()
@@ -1166,8 +1210,15 @@ func _on_autotiles_list_gui_input(event: InputEvent):
 			autotile_list.emit_signal("item_selected", id)
 			var autotile_name 				= data_tileset.tiles[id].name
 			var autotile_animation_delay 	= data_tileset.tiles[id].animation_delay
+			var collision_type				= data_tileset.tiles[id].collision_type
+			var occlusion					= data_tileset.tiles[id].occlusion
+			var collision_percent			= data_tileset.tiles[id].collision_percent
 			name_autotile_dialog_b.text = autotile_name
 			speed_autotile_dialog_b.value = autotile_animation_delay
+			collision_autotile_dialog_b.select(collision_type)
+			percent_autotile_dialog_b.value = collision_percent
+			percent_autotile_dialog_b.editable = collision_type == 1
+			occlusion_autotile_dialog_b.pressed = occlusion
 			var pos = get_global_mouse_position() + Vector2(31, 26)
 			pos.x -= edit_autotile_dialog.rect_size.x
 			edit_autotile_dialog.rect_global_position = pos
@@ -1331,6 +1382,8 @@ func _on_save_all_Button_button_up() -> void:
 		var panel = save_panel_scene.instance()
 		panel.id = save_dialog_container_vbox.get_child_count()
 		panel.connect("deleted", self, "delete_tilemap_in_save_dialog")
+		panel.connect("show_ultimate_revision_dialog_request",
+			self, "show_ultimate_revision_dialog")
 		save_dialog_container_vbox.add_child(panel)
 		var lineedit = panel.columns_spinBox.get_line_edit()
 		lineedit.connect('focus_entered', self,
@@ -1495,7 +1548,7 @@ func _on_fast_export_button_toggled(button_pressed: bool) -> void:
 func get_export_configuration(index):
 	var result = {}
 	# rects = [x, y, columns, rows, type, animation_length, animation_direction]
-	# animation_direction => 1: Left to Right, 2: Up to Down
+	# animation_direction => 1: Left to Right, 2: Up to Down 
 	if index <= 6 or index > 12:
 		result.tile_width = 32
 		result.tile_height = 32
@@ -1583,7 +1636,7 @@ func get_export_configuration(index):
 					result.tile_data.append([x, y, 1, 1, -1, 1, 1])
 			result.columns = 4
 		13: # Tileset XP
-			if img.get_width() / 32 != 0 or img.get_height() / 32 != 0:
+			if img.get_width() % 32 != 0 or img.get_height() % 32 != 0:
 				error = "[color=#3263de]Error[/color]: image size does not\nmatch with the preset"
 				error += "\nAn image with width and height divisible by [color=#FF0000]32[/color] was expected"
 			result.columns = 8
@@ -1615,8 +1668,8 @@ func get_export_configuration(index):
 	for data in result.tile_data:
 		var new_autotile = Autotile.new()
 		new_autotile.type = data[4]
-		var text = get_type_name(data[4]).replace(" - ", "")
-		new_autotile.name = text
+		#var text = get_type_name(data[4]).replace(" - ", "")
+		new_autotile.name = get_type_name(new_autotile.type) + str(tile_id)
 		new_autotile.path = data_images[image_list.get_selected_items()[0]].path
 		var x = data[0] * result.tile_width
 		var y = data[1] * result.tile_height
@@ -1645,6 +1698,8 @@ func get_export_configuration(index):
 	var panel = save_panel_scene.instance()
 	panel.id = 0
 	panel.connect("deleted", self, "delete_tilemap_in_save_dialog")
+	panel.connect("show_ultimate_revision_dialog_request",
+			self, "show_ultimate_revision_dialog")
 	save_dialog_container_vbox.add_child(panel)
 	var lineedit = panel.columns_spinBox.get_line_edit()
 	lineedit.connect('focus_entered', self,
@@ -1804,6 +1859,11 @@ func save_all(user_data = null) -> void:
 							data_rects[im_data.id].path = path
 							data_rects[im_data.id].rect.append(Rect2(
 								dest, src_rect.size))
+							data_rects[im_data.id].animation_delay = im_data.animation_delay
+							data_rects[im_data.id].collision_type = im_data.collision_type
+							data_rects[im_data.id].occlusion = im_data.occlusion
+							data_rects[im_data.id].tile_size = Vector2(tile_width, tile_height)
+							data_rects[im_data.id].collision_percent = im_data.collision_percent
 							img.blit_rect(im, src_rect, dest)
 							height = max(height, im.get_height())
 							x += im.get_width()
@@ -1826,6 +1886,10 @@ func save_all(user_data = null) -> void:
 						data_rects[im_data.id].rect = Rect2(
 							dest, src_rect.size)
 						data_rects[im_data.id].animation_delay = im_data.animation_delay
+						data_rects[im_data.id].collision_type = im_data.collision_type
+						data_rects[im_data.id].occlusion = im_data.occlusion
+						data_rects[im_data.id].tile_size = Vector2(tile_width, tile_height)
+						data_rects[im_data.id].collision_percent = im_data.collision_percent
 						img.blit_rect(im_data.img, src_rect, dest)
 						height = max(height, im_data.img.get_height())
 						x += im_data.img.get_width()
@@ -1847,10 +1911,13 @@ func save_all(user_data = null) -> void:
 			if img.get_width() != mw or img.get_height() != mh:
 				img.crop(mw, mh)
 			# save image (all tiles merged in a single image)
-			img.compress(0, 0, 0.2)
+			if panel_data.compression != 0:
+				img.compress(0, 0, panel_data.compression)
 			img.save_png(path)
 		else:
 			# Save individual images
+			var tile_width = panel_data.tile_width
+			var tile_height = panel_data.tile_height
 			for arr in tile_images:
 				yield(get_tree(), "idle_frame")
 				for img_data in arr:
@@ -1870,28 +1937,38 @@ func save_all(user_data = null) -> void:
 						var src_rect = Rect2(Vector2.ZERO, Vector2(w, h))
 						var x = 0
 						data_rects[img_data.id].rect = []
-						data_rects[img_data.id].animation_delay = img_data.animation_delay
 						for im in img_data.img:
 							var dest = Vector2(x, 0)
 							img.blit_rect(im, src_rect, dest)
 							data_rects[img_data.id].rect.append(Rect2(
 								dest, src_rect.size))
 							x += w
-						img.compress(0, 0, 0.2)
+						print(data_rects[img_data.id].rect)
+						if panel_data.compression != 0:
+							img.compress(0, 0, panel_data.compression)
 						img.save_png(img_data.path)
 						data_rects[img_data.id].name = img_data.name
 						data_rects[img_data.id].type = img_data.type
 						data_rects[img_data.id].path = img_data.path
+						data_rects[img_data.id].collision_type = img_data.collision_type
+						data_rects[img_data.id].occlusion = img_data.occlusion
+						data_rects[img_data.id].tile_size = Vector2(tile_width, tile_height)
+						data_rects[img_data.id].collision_percent = img_data.collision_percent
+						data_rects[img_data.id].animation_delay = img_data.animation_delay
 					else:
-						img_data.img.compress(0, 0, 0.2)
+						if panel_data.compression != 0:
+							img_data.img.compress(0, 0, panel_data.compression)
 						img_data.img.save_png(img_data.path)
 						data_rects[img_data.id].name = img_data.name
 						data_rects[img_data.id].type = img_data.type
 						data_rects[img_data.id].path = img_data.path
 						data_rects[img_data.id].rect = Rect2(
 							Vector2.ZERO, img_data.img.get_size())
+						data_rects[img_data.id].collision_type = img_data.collision_type
+						data_rects[img_data.id].occlusion = img_data.occlusion
+						data_rects[img_data.id].tile_size = Vector2(tile_width, tile_height)
+						data_rects[img_data.id].collision_percent = img_data.collision_percent
 						data_rects[img_data.id].animation_delay = img_data.animation_delay
-
 		# Create tileset:
 		var tileset_str = save_files.tileset
 		var tile_id = 0
@@ -1904,12 +1981,11 @@ func save_all(user_data = null) -> void:
 			var rect = data_rects[id]
 			var text = ""
 			if !paths.has(rect.path):
-				paths[rect.path] = resource_id
+				paths[rect.path] = tile_id
 				text = save_files.tileset_header
 				text = text.replace("#PATH#", rect.path)
 				text = text.replace("#RESOURCE_ID#", tile_id)
-				header += text
-				resource_id += 1
+				header += text + "\n"
 			if rect.type == 0 or rect.type == 1: # floor autotile
 				text = save_files.floor
 			elif rect.type == 2: # wall autotile
@@ -1921,6 +1997,92 @@ func save_all(user_data = null) -> void:
 			var tile_id_str = get_id_formatted(tile_id, ids.size())
 			text = text.replace("#TILE_NAME#", "%s - %s" % [tile_id_str, rect.name])
 			text = text.replace("#RESOURCE_ID#", paths[rect.path])
+			var r
+			if rect.rect is Array:
+				r = rect.rect[0]
+			else:
+				r = rect.rect
+			if rect.occlusion:
+				var pol
+				if rect.type == -1:
+					pol = str(_create_collision_polygon(rect.path, r))
+				else:
+					pol = str(_create_simple_collision_polygon(rect.tile_size))
+				pol = pol.replace("[", "")
+				pol = pol.replace("]", "")
+				pol = pol.replace("(", "")
+				pol = pol.replace(")", "")
+				header += "[sub_resource type=\"OccluderPolygon2D\" id=%s]\n" % \
+					resource_id
+				header += "polygon = PoolVector2Array( %s )\n\n" % pol
+				var new_text = ""
+				if rect.type == -1:
+					 new_text = "#TILE_ID#/occluder = SubResource( %s )" % resource_id
+				else:
+					for y in r.size.y / rect.tile_size.y:
+						for x in r.size.x / rect.tile_size.x:
+							if new_text != "": new_text += ", "
+							new_text += "Vector2( %s, %s), " % \
+								[x, y]
+							new_text += "SubResource( %s )" % str(resource_id)
+					new_text = "#TILE_ID#/autotile/occluder_map = [ %s ]\n" % new_text
+				text = text.replace("#OCCLUDER#", new_text)
+				resource_id += 1
+			else:
+				text = text.replace("#OCCLUDER#\n", "")
+			if rect.collision_type == 0: # NO COLLISION
+				text = text.replace("#SHAPEEXTENDES#", "")
+				text = text.replace("#SHAPE#\n", "")
+			elif rect.collision_type == 1 or rect.type != -1:
+				var pol
+				if rect.type == -1:
+					pol = str(_create_simple_collision_polygon(rect.rect.size,
+						rect.collision_percent))
+				else:
+					pol = str(_create_simple_collision_polygon(rect.tile_size,
+						rect.collision_percent))
+				pol = pol.replace("[", "")
+				pol = pol.replace("]", "")
+				pol = pol.replace("(", "")
+				pol = pol.replace(")", "")
+				header += "[sub_resource type=\"ConvexPolygonShape2D\" id=%s]\n" % \
+					resource_id
+				header += "points = PoolVector2Array( %s )\n\n" % pol
+				if rect.type == -1:
+					var new_text = save_files.single_shape
+					new_text = new_text.replace("#TILE_ID#", str(resource_id))
+					text = text.replace("#SHAPEEXTENDES#", new_text)
+					new_text = "#TILE_ID#/shape = SubResource( %s )" % str(resource_id)
+					text = text.replace("#SHAPE#", new_text)
+				else:
+					var new_text = ""
+					for y in r.size.y / rect.tile_size.y:
+						for x in r.size.x / rect.tile_size.x:
+							var t = save_files.single_shape
+							var v = "Vector2( %s, %s )" % [x, y]
+							t = t.replace("Vector2( 0, 0 )", v)
+							if new_text != "": new_text += ",\n"
+							new_text += t
+					new_text = new_text.replace("#TILE_ID#", str(resource_id))
+					text = text.replace("#SHAPEEXTENDES#", new_text)
+					new_text = "#TILE_ID#/shape = SubResource( %s )" % str(resource_id)
+					text = text.replace("#SHAPE#", new_text)
+				resource_id += 1
+			else:
+				var pol = str(_create_collision_polygon(rect.path, r))
+				pol = pol.replace("[", "")
+				pol = pol.replace("]", "")
+				pol = pol.replace("(", "")
+				pol = pol.replace(")", "")
+				header += "[sub_resource type=\"ConvexPolygonShape2D\" id=%s]\n" % \
+					resource_id
+				header += "points = PoolVector2Array( %s )\n\n" % pol
+				var new_text = save_files.single_shape
+				new_text = new_text.replace("#TILE_ID#", str(resource_id))
+				text = text.replace("#SHAPEEXTENDES#", new_text)
+				new_text = "#TILE_ID#/shape = SubResource( %s )" % str(resource_id)
+				text = text.replace("#SHAPE#", new_text)
+				resource_id += 1
 			text = text.replace("#TILE_ID#", tile_id)
 			if rect.rect is Rect2:
 				text = text.replace("#RECT#", "Rect2" + str(rect.rect))
@@ -1970,10 +2132,34 @@ func save_all(user_data = null) -> void:
 		emit_signal("save_completed")
 		#hide_all_dialogs()
 		print("Saved!")
-		hide_all_dialogs()
 					
-		
-		
+
+func _create_collision_polygon(path : String, src_rect: Rect2) -> Array:
+	var tex = load_external_texture(path)
+	var img = Image.new()
+	img.create(src_rect.size.x, src_rect.size.y, false, tex.get_data().get_format())
+	img.blit_rect(tex.get_data(), src_rect, Vector2.ZERO)
+	tex = ImageTexture.new()
+	tex.create_from_image(img)
+	var bm = BitMap.new()
+	bm.create_from_image_alpha(tex.get_data())
+	var rect = Rect2(0, 0, tex.get_data().get_width(), tex.get_data().get_height())
+	var my_array = bm.opaque_to_polygons(rect)
+	return my_array
+	
+func _create_simple_collision_polygon(size : Vector2, percent : int = 100) -> Array:
+	var mod = size.y * (percent / 100.0)
+	var y = size.y - mod
+	var my_array = [
+		Vector2(0, y),
+		Vector2(size.x, y),
+		Vector2(size.x, size.y),
+		Vector2(0, size.y)
+	]
+	return my_array
+
+
+
 func get_id_formatted(_id : int, _size : int) -> String:
 	var result = ""
 	var zeros = str(_size).length() - str(_id).length()
@@ -2026,6 +2212,9 @@ func get_image_for_tiles(data_tiles : Dictionary, key : String) -> Array:
 					"tile_width"		: tile.tile_width,
 					"tile_height"		: tile.tile_height,
 					"animation_delay"	: tile.animation_delay,
+					"collision_type"	: tile.collision_type,
+					"occlusion"			: tile.occlusion,
+					"collision_percent"	: tile.collision_percent,
 				})
 		if data_tiles[key].individual.size() > 0:
 			for tile in data_tiles[key].individual:
@@ -2037,6 +2226,9 @@ func get_image_for_tiles(data_tiles : Dictionary, key : String) -> Array:
 					"tile_width"		: tile.tile_width,
 					"tile_height"		: tile.tile_height,
 					"animation_delay"	: tile.animation_delay,
+					"collision_type"	: tile.collision_type,
+					"occlusion"			: tile.occlusion,
+					"collision_percent"	: tile.collision_percent,
 				})
 	return result
 	
@@ -2108,3 +2300,102 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 		event.is_pressed() and event.scancode == KEY_ESCAPE):
 			if !save_dialog.visible and !file_dialog.visible:
 				hide_all_dialogs()
+
+
+func _on_create_autotile_OptionButton_item_selected(index: int) -> void:
+	if index == 1:
+		create_autotile_dialog_s.editable = true
+		var lineedit = create_autotile_dialog_s.get_line_edit()
+		lineedit.caret_position = lineedit.text.length()
+		lineedit.select_all()
+		yield(get_tree(), "idle_frame")
+		lineedit.grab_focus()
+	else:
+		create_autotile_dialog_s.editable = false
+
+
+func _on_edit_autotile_OptionButton_item_selected(index: int) -> void:
+	if index == 1:
+		percent_autotile_dialog_b.editable = true
+		var lineedit = percent_autotile_dialog_b.get_line_edit()
+		lineedit.caret_position = lineedit.text.length()
+		lineedit.select_all()
+		yield(get_tree(), "idle_frame")
+		lineedit.grab_focus()
+	else:
+		percent_autotile_dialog_b.editable = false
+		
+func show_ultimate_revision_dialog(tiles):
+	ultimate_dialog_itemlist.clear()
+	var data; var data2;
+	for key in tiles:
+		data = tiles[key]
+		for key2 in data:
+			data2 = data[key2]
+			for tile in data2:
+				ultimate_tiles.append(tile)
+				ultimate_dialog_itemlist.add_item(tile.name)
+	if ultimate_dialog_itemlist.get_item_count() != 0:
+		ultimate_dialog_itemlist.select(0)
+		update_ultimate_autotile_preview(0)
+	ultimate_dialog_layer.visible = true
+	ultimate_dialog.show()
+
+
+func update_ultimate_autotile_preview(index: int) -> void:
+	no_action = true
+	if ultimate_last_tile != index and ultimate_last_tile != null:
+		var autotile = ultimate_tiles[ultimate_last_tile]
+		ultimate_dialog_percent.apply()
+		autotile.collision_type = ultimate_dialog_collision.get_selected_id()
+		autotile.collision_percent = ultimate_dialog_percent.value
+		autotile.occlusion = ultimate_dialog_occlusion.pressed
+	var autotile = ultimate_tiles[index]
+	var result_image = get_tile(autotile)
+	ultimate_dialog_preview_t.texture = load_external_texture(result_image)
+	ultimate_dialog_collision.select(autotile.collision_type)
+	ultimate_dialog_percent.value = autotile.collision_percent
+	ultimate_dialog_occlusion.pressed = autotile.occlusion
+	ultimate_dialog_percent.editable = autotile.collision_type == 1
+	ultimate_last_tile = index
+	no_action = false
+
+
+func _on_ultimate_percent_SpinBox_value_changed(value: float) -> void:
+	if no_action: return
+	var index = ultimate_dialog_itemlist.get_selected_items()[0]
+	var autotile = ultimate_tiles[index]
+	autotile.collision_percent = value
+
+func _on_ultimate_occlusion_CheckButton_toggled(button_pressed: bool) -> void:
+	if no_action: return
+	var index = ultimate_dialog_itemlist.get_selected_items()[0]
+	var autotile = ultimate_tiles[index]
+	autotile.occlusion = button_pressed
+
+
+func _on_ultimate_collision_type_OptionButton_item_selected(collision_type : int) -> void:
+	if no_action: return
+	var index = ultimate_dialog_itemlist.get_selected_items()[0]
+	var autotile = ultimate_tiles[index]
+	autotile.occlusion = collision_type
+	ultimate_dialog_percent.editable = collision_type == 1
+
+
+func _on_ultimate_revision_dialog_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == 1 and \
+		event.is_pressed():
+		ultimate_dialog.hide()
+
+
+func _on_ultimate_WindowDialog_hide() -> void:
+	if !ultimate_dialog_itemlist: return
+	if ultimate_last_tile != null:
+		update_ultimate_autotile_preview(ultimate_last_tile)
+	ultimate_tiles.clear()
+	ultimate_dialog_itemlist.clear()
+	ultimate_dialog_layer.visible = false
+
+
+func _on_ultimate_close_button_down() -> void:
+	ultimate_dialog.hide()

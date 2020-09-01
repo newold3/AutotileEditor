@@ -92,7 +92,6 @@ tracks/1/keys = {
 }
 
 [node name="CustomToolTip" type="RichTextLabel"]
-modulate = Color( 1, 1, 1, 0 )
 margin_right = 11.0
 margin_bottom = 7.0
 rect_clip_content = false
