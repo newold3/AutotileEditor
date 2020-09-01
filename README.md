@@ -31,6 +31,11 @@ Done!
 
 ## Updates:
 
+* 01/09/2020:
+	* Update to version 1.1
+	* Added Auto-collision
+	* Added Auto-occlusion
+	* Fixed minor bugs
 * 12/07/2020:
 	* Setup of the finished project on GitHub.
 
